@@ -1,82 +1,142 @@
 # droid2sim
 
-Reproduction of [PolaRiS](https://github.com/arhanjain/polaris) Real-to-Sim evaluations
-for the DROID generalist policy (pi05), with QHD (2560x1440 per camera) sim renders.
+Reproduction of [PolaRiS](https://github.com/arhanjain/polaris) Real-to-Sim
+evaluations for the DROID generalist policy (`pi05_droid_jointpos_polaris`),
+rendered at QHD (2560x1440 per camera).
 
-A static rendered grid comparing real-world DROID demos against sim rollouts is in
-[`index.html`](./index.html).
+A static comparison page (real DROID demo vs. sim rollout) is in
+[`index.html`](./index.html). Cloning this repo plus the steps below is
+sufficient to reproduce the rollouts.
 
-## What's in this repo
+## Repository layout
 
 ```
 .
-|-- index.html                    Rendered comparison grid (open in browser)
+|-- index.html                       Rendered comparison grid (open in browser)
+|-- polaris/                         Vendored arhanjain/polaris source (patched)
 |-- assets/
-|   |-- real/                     6 real-world DROID rollouts (time-warped to 7.6s)
-|   `-- sim/<env>/                6 sim rollouts (episode 0, QHD, 2x slow = 7.5s)
-|-- results/<env>/eval_results.csv  Eval scores (success/progress per episode)
-|-- patches/polaris.patch         Local modifications to arhanjain/polaris
-`-- scripts/
-    |-- setup_polaris.sh          Clone + patch polaris for reproducing rollouts
-    `-- build_pages.py            Regenerate index.html from assets/ + results/
+|   |-- real/                        6 real-world DROID rollouts (7.6s)
+|   `-- sim/<env>/episode_0_mid.mp4  6 sim rollouts at QHD, 2x slow (7.5s)
+|-- results/<env>/eval_results.csv   Eval scores per environment (5 rollouts)
+`-- scripts/build_pages.py           Regenerate index.html from assets/+results/
 ```
 
 ## Upstream repositories
 
-This work uses two upstream repositories from the PolaRiS authors. Neither is forked
-or vendored here; modifications to `polaris` are tracked as a single patch file.
-
 | Upstream | Status | How it appears here |
 |---|---|---|
-| [arhanjain/polaris](https://github.com/arhanjain/polaris) | **modified** | `patches/polaris.patch` (camera resolution + native frame capture + build fix) |
-| [arhanjain/sim-evals](https://github.com/arhanjain/sim-evals) | **unused** | Not present. Considered as a lighter zero-shot alternative; the QHD eval pipeline here uses the full `polaris` repo. |
+| [arhanjain/polaris](https://github.com/arhanjain/polaris) | **vendored + modified** | `polaris/` (see `git log polaris/`) |
+| [arhanjain/sim-evals](https://github.com/arhanjain/sim-evals) | **unused** | Not present. A lighter zero-shot eval path; this repo uses the full PolaRiS pipeline. |
 
-The patch modifies four files in `arhanjain/polaris`:
+The two commits `308c215` (vendor upstream) and `b55b668` (apply local
+modifications) isolate every line we changed.
 
-| File | Change |
+| File under `polaris/` | Change |
 |---|---|
-| `pyproject.toml` | Add `[tool.uv.extra-build-dependencies]` pinning `setuptools<70` for the `flatdict` build (fixes `pkg_resources` ImportError on modern setuptools) |
-| `src/polaris/environments/droid_cfg.py` | Raise camera native resolution from 1280x720 to 2560x1440 (wrist + external + dynamic scene cameras) |
-| `scripts/eval.py` | Replace the policy-input-sized `viz` (224x224 per camera) with the native QHD frames pulled from `obs["splat"]` for video output |
-| `uv.lock` | Mechanical lock-file regeneration triggered by the above |
+| `pyproject.toml` | Pin `setuptools<70` as an extra build dep for `flatdict` (fixes `pkg_resources` ImportError under modern setuptools) |
+| `src/polaris/environments/droid_cfg.py` | Raise native render resolution from 1280x720 to 2560x1440 on `wrist_cam`, `external_cam`, and scene-derived cameras |
+| `scripts/eval.py` | Save native QHD frames from `obs["splat"]` instead of the policy-input `viz` (224x224) |
 
-## Reproducing the sim rollouts
+## Prerequisites
 
-1. Clone and patch `arhanjain/polaris` (outputs into `./external/polaris` by default):
+- Linux with an NVIDIA GPU supporting Vulkan ray tracing (tested on RTX PRO 6000)
+- NVIDIA driver with the matching Vulkan and EGL ICDs installed:
+  - `/usr/share/vulkan/icd.d/nvidia_icd.json`
+  - `/usr/share/glvnd/egl_vendor.d/10_nvidia.json`
+- CUDA toolkit (`nvcc`) matching the torch wheels (default: CU13; switch in
+  `polaris/pyproject.toml` if needed)
+- `ffmpeg` (for saving rollout videos): `sudo apt install ffmpeg`
+- [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
 
-   ```bash
-   ./scripts/setup_polaris.sh
-   ```
+## Setup
 
-2. Follow the upstream README at https://github.com/arhanjain/polaris for environment
-   setup (`uv sync`, openpi sync, HF `PolaRiS-Hub` download, ffmpeg).
+### 1. Sync the polaris environment
 
-3. Launch the policy server (in `external/polaris/third_party/openpi`):
+```bash
+cd polaris
+uv sync
+```
 
-   ```bash
-   CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.35 uv run scripts/serve_policy.py \
-     --port 8001 policy:checkpoint \
-     --policy.config pi05_droid_jointpos_polaris \
-     --policy.dir gs://openpi-assets/checkpoints/polaris/pi05_droid_jointpos_polaris
-   ```
+This pulls Isaac Sim (`isaaclab[all,isaacsim]==2.3.0`) and the CUDA-built
+submodules (`diff-surfel-rasterization`, `simple-knn`). First sync is heavy
+(>15GB cache, several minutes).
 
-4. Run eval (in `external/polaris`, headless server needs nvidia ICDs explicit):
+### 2. Sync openpi (for the policy server)
 
-   ```bash
-   unset DISPLAY
-   VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json \
-   __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json \
-   __GLX_VENDOR_LIBRARY_NAME=nvidia \
-   CUDA_VISIBLE_DEVICES=1 OMNI_KIT_ACCEPT_EULA=YES \
-   uv run scripts/eval.py \
-     --environment DROID-FoodBussing --policy.port 8001 \
-     --run-folder runs/foodbussing --rollouts 5
-   ```
+```bash
+cd polaris/third_party/openpi
+GIT_LFS_SKIP_SMUDGE=1 uv sync
+GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
+```
 
-   Repeat for the other five environments (`DROID-BlockStackKitchen`, `DROID-PanClean`,
-   `DROID-MoveLatteCup`, `DROID-OrganizeTools`, `DROID-TapeIntoContainer`).
+### 3. Download the PolaRiS-Hub data
 
-## Results summary (pi05, 5 rollouts each)
+```bash
+cd polaris
+uvx hf download owhan/PolaRiS-Hub --repo-type=dataset --local-dir PolaRiS-Hub
+```
+
+This is ~1.7GB containing the six scanned scenes. `eval.py` resolves
+`./PolaRiS-Hub/<env>/scene.usda` relative to the working directory.
+
+## Running the evaluation
+
+Two processes are needed: a policy server (openpi) and the eval client
+(polaris/isaaclab). They must use different GPUs - Omniverse and JAX
+otherwise contend for the same renderer.
+
+### Policy server (e.g. GPU 0)
+
+```bash
+cd polaris/third_party/openpi
+CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.35 \
+  uv run scripts/serve_policy.py \
+    --port 8001 policy:checkpoint \
+    --policy.config pi05_droid_jointpos_polaris \
+    --policy.dir gs://openpi-assets/checkpoints/polaris/pi05_droid_jointpos_polaris
+```
+
+First launch downloads the 11.6GB checkpoint into `~/.cache/openpi`
+(anonymous gs:// via `fsspec[gcs]`, no `gcloud` CLI required). Wait until
+the log shows `server listening on 0.0.0.0:8001`.
+
+### Eval client (e.g. GPU 1, separate process)
+
+```bash
+cd polaris
+unset DISPLAY
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json \
+__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json \
+__GLX_VENDOR_LIBRARY_NAME=nvidia \
+CUDA_VISIBLE_DEVICES=1 OMNI_KIT_ACCEPT_EULA=YES \
+  uv run scripts/eval.py \
+    --environment DROID-FoodBussing \
+    --policy.port 8001 \
+    --run-folder runs/food_bussing \
+    --rollouts 5
+```
+
+Repeat with the other five environments (`DROID-BlockStackKitchen`,
+`DROID-PanClean`, `DROID-MoveLatteCup`, `DROID-OrganizeTools`,
+`DROID-TapeIntoContainer`). Each run produces `eval_results.csv` and one
+`.mp4` per episode under `--run-folder`.
+
+### Why the env vars matter
+
+- `unset DISPLAY` forces Isaac Sim down the EGL path; running with an
+  Xvfb-provided X display produces `GLXBadFBConfig` because Xvfb only
+  exposes software GLX.
+- `VK_ICD_FILENAMES`, `__EGL_VENDOR_LIBRARY_FILENAMES`,
+  `__GLX_VENDOR_LIBRARY_NAME` pin the NVIDIA Vulkan and EGL ICDs.
+  Without them Isaac Sim may fail at `omni.gpu_foundation_factory`
+  with "Failed to create any GPU devices".
+- `OMNI_KIT_ACCEPT_EULA=YES` bypasses the interactive EULA prompt that
+  otherwise blocks headless runs at first launch.
+- `CUDA_VISIBLE_DEVICES` must point each process at a distinct GPU.
+  Sharing one GPU with the policy server can trip Omniverse renderer
+  initialization.
+
+## Results (pi05, 5 rollouts per environment)
 
 | Env | avg progress | success |
 |---|---:|---:|
@@ -88,15 +148,17 @@ The patch modifies four files in `arhanjain/polaris`:
 | TapeIntoContainer | 0.07 | 0/5 |
 | **overall**       | **0.32** | **3/30** |
 
-## Viewing the page
+Per-episode rows are in `results/<env>/eval_results.csv`.
 
-Either open `index.html` locally, or enable GitHub Pages on this repository
-(Settings -> Pages -> Source: `main`/root). The page is fully static and uses
-only files in `assets/`.
+## Viewing the comparison page
+
+Open `index.html` locally, or enable GitHub Pages on this repo (Settings >
+Pages > Source: `main`/root). The page references only files in `assets/`
+and is fully static.
 
 ## Regenerating the page
 
-After updating an `eval_results.csv` or replacing a video under `assets/`:
+After editing a CSV or replacing a video in `assets/`:
 
 ```bash
 python3 scripts/build_pages.py

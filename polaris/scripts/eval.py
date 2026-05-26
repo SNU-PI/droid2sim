@@ -81,10 +81,24 @@ def main(eval_args: EvalArgs):
     )
     policy_client.reset()
     print(f" >>> Starting eval job from episode {episode + 1} of {rollouts} <<< ")
+    def _to_hwc_uint8(x):
+        if hasattr(x, "detach"):
+            x = x.detach().cpu().numpy()
+        import numpy as _np
+        if x.ndim == 4:
+            x = x[0]
+        if x.dtype != _np.uint8:
+            x = (x * 255).clip(0, 255).astype(_np.uint8) if x.max() <= 1.0 else x.astype(_np.uint8)
+        return x
+
     while True:
         action, viz = policy_client.infer(obs, language_instruction)
         if viz is not None:
-            video.append(viz)
+            import numpy as _np
+            curr = policy_client._extract_observation(obs)
+            hi_ext = _to_hwc_uint8(curr["right_image"])
+            hi_wri = _to_hwc_uint8(curr["wrist_image"])
+            video.append(_np.concatenate([hi_ext, hi_wri], axis=1))
         obs, rew, term, trunc, info = env.step(
             torch.tensor(action).reshape(1, -1), expensive=policy_client.rerender
         )

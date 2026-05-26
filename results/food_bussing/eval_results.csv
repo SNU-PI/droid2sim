@@ -1,0 +1,6 @@
+episode,episode_length,success,progress
+0,450,True,1.0
+1,450,False,0.5
+2,450,False,0.5
+3,450,False,0.5
+4,450,False,0.3333333333333333

@@ -1,0 +1,19 @@
+# Working directories not tracked in this repo
+repos/
+data/
+runs/
+notes/
+external/
+
+# Caches / venvs / builds
+.venv/
+__pycache__/
+*.egg-info/
+.cache/
+.uv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

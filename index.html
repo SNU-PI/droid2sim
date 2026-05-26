@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PolaRiS Grid - real vs sim (episode 0)</title>
+<style>
+  body { background:#111; color:#ddd; font-family:-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px; }
+  h1 { font-weight:500; margin:0 0 16px 0; }
+  .pair { display:grid; grid-template-columns: 1fr 1fr; gap:8px; }
+  .cell { display:flex; flex-direction:column; align-items:center; }
+  .label { font-size:14px; color:#bbb; margin-bottom:6px; text-align:center; }
+  .inst { font-weight:400; color:#888; font-size:11px; }
+  video { width:400px; height:200px; object-fit:contain; background:#000; display:block; }
+  .cap { color:#888; font-size:12px; margin-top:2px; text-align:center; }
+  .badge { display:inline-block; font-size:11px; padding:1px 6px; border-radius:6px; margin-left:4px; vertical-align:middle; }
+  .ok { background:#1a5; color:#fff; }
+  .meh { background:#a73; color:#fff; }
+  .bad { background:#444; color:#aaa; }
+  .footer { margin-top:24px; color:#666; font-size:12px; }
+</style>
+</head>
+<body>
+<h1>PolaRiS - 6 environments, real vs sim (episode 0)</h1>
+
+<table style="border-collapse:separate; border-spacing:20px 16px;">
+  <tr>
+    <td valign="top">
+      <div class="label"><strong>FoodBussing</strong> <span class="inst">- Put all the foods in the bowl</span></div>
+      <div class="pair">
+        <div class="cell"><video src="assets/real/fruitbus.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
+        <div class="cell"><video src="assets/sim/food_bussing/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge ok">&#10003; 1.00</span></div></div>
+      </div>
+    </td>
+    <td valign="top">
+      <div class="label"><strong>BlockStackKitchen</strong> <span class="inst">- Place and stack the blocks on top of the green tray</span></div>
+      <div class="pair">
+        <div class="cell"><video src="assets/real/stack.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
+        <div class="cell"><video src="assets/sim/block_stack_kitchen/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.14</span></div></div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <div class="label"><strong>PanClean</strong> <span class="inst">- Use the yellow sponge to scrub the blue-handle frying pan</span></div>
+      <div class="pair">
+        <div class="cell"><video src="assets/real/panclean.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
+        <div class="cell"><video src="assets/sim/pan_clean/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge ok">&#10003; 1.00</span></div></div>
+      </div>
+    </td>
+    <td valign="top">
+      <div class="label"><strong>MoveLatteCup</strong> <span class="inst">- Put the latte art cup on top of the cutting board</span></div>
+      <div class="pair">
+        <div class="cell"><video src="assets/real/lattecup.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
+        <div class="cell"><video src="assets/sim/move_latte_cup/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.00</span></div></div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <div class="label"><strong>OrganizeTools</strong> <span class="inst">- Put the scissor into the large container</span></div>
+      <div class="pair">
+        <div class="cell"><video src="assets/real/scissor.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
+        <div class="cell"><video src="assets/sim/organize_tools/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.00</span></div></div>
+      </div>
+    </td>
+    <td valign="top">
+      <div class="label"><strong>TapeIntoContainer</strong> <span class="inst">- Put the tape into the container</span></div>
+      <div class="pair">
+        <div class="cell"><video src="assets/real/tape.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
+        <div class="cell"><video src="assets/sim/tape_into_container/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.33</span></div></div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="footer">
+  Sim: native 5120x1440 (exterior | wrist), 2x slow (7.5s). Real: 448x224, time-warped to 7.6s.
+</div>
+</body>
+</html>

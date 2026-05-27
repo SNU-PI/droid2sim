@@ -1,0 +1,133 @@
+{
+  "env": "pan_clean",
+  "scene_usda": "data/PolaRiS-Hub/pan_clean/scene.usda",
+  "world_prims": [
+    {
+      "name": "g60_stovetop_zed",
+      "type": "Xform"
+    },
+    {
+      "name": "pan",
+      "type": "Xform"
+    },
+    {
+      "name": "mustard",
+      "type": "Xform"
+    },
+    {
+      "name": "ketchup",
+      "type": "Xform"
+    },
+    {
+      "name": "sponge",
+      "type": "Xform"
+    },
+    {
+      "name": "pepper",
+      "type": "Xform"
+    },
+    {
+      "name": "sushi",
+      "type": "Xform"
+    },
+    {
+      "name": "coke",
+      "type": "Xform"
+    },
+    {
+      "name": "mug",
+      "type": "Xform"
+    },
+    {
+      "name": "external_cam",
+      "type": "Camera"
+    },
+    {
+      "name": "defaultLight",
+      "type": "DistantLight"
+    },
+    {
+      "name": "OmniverseGlobalRenderSettings",
+      "type": "RenderSettings"
+    }
+  ],
+  "asset_payloads": [
+    {
+      "folder": "g60_stovetop_zed",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "frying_pan",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "mustard",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "ketchup",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "sponge",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "bell_pepper",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "sushi",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "coke",
+      "file": "mesh.usdz"
+    },
+    {
+      "folder": "blue_mug",
+      "file": "mesh.usdz"
+    }
+  ],
+  "splats": [
+    {
+      "folder": "g60_stovetop_zed",
+      "format": "format binary_little_endian 1.0",
+      "vertex_count": 549887,
+      "property_count": 61
+    }
+  ],
+  "cameras": {
+    "wrist_cam": {
+      "height": 1440,
+      "width": 2560,
+      "focal_length": 2.8,
+      "focus_distance": 28.0,
+      "horizontal_aperture": 5.376,
+      "vertical_aperture": 3.024,
+      "offset_pos": [
+        0.011,
+        -0.031,
+        -0.074
+      ],
+      "offset_rot_quat_wxyz": [
+        -0.42,
+        0.57,
+        0.576,
+        -0.409
+      ],
+      "convention": "opengl",
+      "attached_to": "robot/Gripper/Robotiq_2F_85/base_link"
+    },
+    "external_cam_default": {
+      "height": 1440,
+      "width": 2560,
+      "focal_length": 1.0476,
+      "horizontal_aperture": 2.5452,
+      "vertical_aperture": 1.4721,
+      "note": "Used when scene.usda does not define an external camera"
+    }
+  },
+  "instruction": "Use the yellow sponge to scrub the blue handle frying pan",
+  "num_initial_conditions": 100
+}

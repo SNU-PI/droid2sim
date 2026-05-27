@@ -1,0 +1,40 @@
+{
+  "rollouts": 5,
+  "success_count": 0,
+  "success_rate": 0.0,
+  "avg_progress": 0.34285714285714286,
+  "min_progress": 0.14285714285714285,
+  "max_progress": 0.5714285714285714,
+  "per_episode": [
+    {
+      "episode": 0,
+      "episode_length": 450,
+      "success": false,
+      "progress": 0.14285714285714285
+    },
+    {
+      "episode": 1,
+      "episode_length": 450,
+      "success": false,
+      "progress": 0.14285714285714285
+    },
+    {
+      "episode": 2,
+      "episode_length": 450,
+      "success": false,
+      "progress": 0.5714285714285714
+    },
+    {
+      "episode": 3,
+      "episode_length": 450,
+      "success": false,
+      "progress": 0.42857142857142855
+    },
+    {
+      "episode": 4,
+      "episode_length": 450,
+      "success": false,
+      "progress": 0.42857142857142855
+    }
+  ]
+}

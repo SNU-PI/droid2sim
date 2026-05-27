@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Build the static grid page (index.html) from assets/ and results/."""
+"""Build the static comparison + figures page (index.html)."""
 from pathlib import Path
 import csv
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 RESULTS = ROOT / "results"
+FIGURES = ASSETS / "figures"
 
 ENVS = [
     ("food_bussing",        "fruitbus.mp4",  "FoodBussing",        "Put all the foods in the bowl"),
@@ -16,6 +17,13 @@ ENVS = [
     ("tape_into_container", "tape.mp4",      "TapeIntoContainer",  "Put the tape into the container"),
 ]
 EP = 0
+
+FIGURE_PANELS = [
+    "panel_1_joint_angles.png",
+    "panel_2_ee_path.png",
+    "panel_3_joint_torque.png",
+    "panel_5_action_vs_joint.png",
+]
 
 
 def read_progress(env, ep):
@@ -38,10 +46,11 @@ HTML = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PolaRiS Grid - real vs sim (episode 0)</title>
+<title>PolaRiS Grid - real vs sim</title>
 <style>
   body {{ background:#111; color:#ddd; font-family:-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px; }}
   h1 {{ font-weight:500; margin:0 0 16px 0; }}
+  h2 {{ margin-top:36px; padding-left:10px; border-left:4px solid #4af; }}
   .pair {{ display:grid; grid-template-columns: 1fr 1fr; gap:8px; }}
   .cell {{ display:flex; flex-direction:column; align-items:center; }}
   .label {{ font-size:14px; color:#bbb; margin-bottom:6px; text-align:center; }}
@@ -53,10 +62,16 @@ HTML = """<!DOCTYPE html>
   .meh {{ background:#a73; color:#fff; }}
   .bad {{ background:#444; color:#aaa; }}
   .footer {{ margin-top:24px; color:#666; font-size:12px; }}
+  .grid2 {{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:14px; }}
+  .env2x2 {{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:8px; margin-bottom:28px; }}
+  .env2x2 .fcell {{ background:#1b1f27; padding:0; border-radius:6px; overflow:hidden; }}
+  .env2x2 .fcell img {{ width:100%; height:520px; object-fit:contain; display:block; background:#1b1f27; }}
+  .fcell {{ background:#1b1f27; padding:10px; border-radius:8px; }}
+  .fcell img {{ width:100%; display:block; border-radius:4px; }}
 </style>
 </head>
 <body>
-<h1>PolaRiS - 6 environments, real vs sim (episode 0)</h1>
+<h1>PolaRiS - 6 environments, real vs sim</h1>
 
 <table style="border-collapse:separate; border-spacing:20px 16px;">
 {rows}
@@ -65,6 +80,16 @@ HTML = """<!DOCTYPE html>
 <div class="footer">
   Sim: native 5120x1440 (exterior | wrist), 2x slow (7.5s). Real: 448x224, time-warped to 7.6s.
 </div>
+
+<h1 style="margin-top:48px">Trajectory figures</h1>
+{figures}
+
+<h2>Summary</h2>
+<div class="grid2">
+  <div class="fcell"><img src="assets/figures/summary/S1_success_rate.png"><div class="cap">S1 success rate</div></div>
+  <div class="fcell"><img src="assets/figures/summary/S2_avg_progress.png"><div class="cap">S2 avg progress</div></div>
+</div>
+
 </body>
 </html>
 """
@@ -75,9 +100,20 @@ ENV_BLOCK = """    <td valign="top">
       <div class="label"><strong>{label}</strong> <span class="inst">- {instruction}</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/{real_fn}" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/{env}/episode_{ep}_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep{ep} {badge}</div></div>
+        <div class="cell"><video src="assets/sim/{env}/episode_{ep}_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim {badge}</div></div>
       </div>
     </td>"""
+
+
+def build_figure_blocks():
+    out = []
+    for env, _real, label, _inst in ENVS:
+        out.append(f'<h2>{label} <span style="font-size:13px;color:#888">({env})</span></h2>')
+        out.append('<div class="env2x2">')
+        for fname in FIGURE_PANELS:
+            out.append(f'  <div class="fcell"><img src="assets/figures/{env}/{fname}"></div>')
+        out.append("</div>")
+    return "\n".join(out)
 
 
 def main():
@@ -93,7 +129,7 @@ def main():
                 badge=badge_for(success, prog),
             ))
         rows.append(ROW.format(cells="\n".join(cells)))
-    html = HTML.format(rows="\n".join(rows))
+    html = HTML.format(rows="\n".join(rows), figures=build_figure_blocks())
     (ROOT / "index.html").write_text(html)
     print("wrote", ROOT / "index.html")
 

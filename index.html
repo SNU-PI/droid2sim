@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PolaRiS Grid - real vs sim (episode 0)</title>
+<title>PolaRiS Grid - real vs sim</title>
 <style>
   body { background:#111; color:#ddd; font-family:-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:24px; }
   h1 { font-weight:500; margin:0 0 16px 0; }
+  h2 { margin-top:36px; padding-left:10px; border-left:4px solid #4af; }
   .pair { display:grid; grid-template-columns: 1fr 1fr; gap:8px; }
   .cell { display:flex; flex-direction:column; align-items:center; }
   .label { font-size:14px; color:#bbb; margin-bottom:6px; text-align:center; }
@@ -17,10 +18,16 @@
   .meh { background:#a73; color:#fff; }
   .bad { background:#444; color:#aaa; }
   .footer { margin-top:24px; color:#666; font-size:12px; }
+  .grid2 { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:14px; }
+  .env2x2 { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:8px; margin-bottom:28px; }
+  .env2x2 .fcell { background:#1b1f27; padding:0; border-radius:6px; overflow:hidden; }
+  .env2x2 .fcell img { width:100%; height:520px; object-fit:contain; display:block; background:#1b1f27; }
+  .fcell { background:#1b1f27; padding:10px; border-radius:8px; }
+  .fcell img { width:100%; display:block; border-radius:4px; }
 </style>
 </head>
 <body>
-<h1>PolaRiS - 6 environments, real vs sim (episode 0)</h1>
+<h1>PolaRiS - 6 environments, real vs sim</h1>
 
 <table style="border-collapse:separate; border-spacing:20px 16px;">
   <tr>
@@ -28,14 +35,14 @@
       <div class="label"><strong>FoodBussing</strong> <span class="inst">- Put all the foods in the bowl</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/fruitbus.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/food_bussing/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge ok">&#10003; 1.00</span></div></div>
+        <div class="cell"><video src="assets/sim/food_bussing/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim <span class="badge ok">&#10003; 1.00</span></div></div>
       </div>
     </td>
     <td valign="top">
       <div class="label"><strong>BlockStackKitchen</strong> <span class="inst">- Place and stack the blocks on top of the green tray</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/stack.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/block_stack_kitchen/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.14</span></div></div>
+        <div class="cell"><video src="assets/sim/block_stack_kitchen/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim <span class="badge bad">0.14</span></div></div>
       </div>
     </td>
   </tr>
@@ -44,14 +51,14 @@
       <div class="label"><strong>PanClean</strong> <span class="inst">- Use the yellow sponge to scrub the blue-handle frying pan</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/panclean.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/pan_clean/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge ok">&#10003; 1.00</span></div></div>
+        <div class="cell"><video src="assets/sim/pan_clean/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim <span class="badge ok">&#10003; 1.00</span></div></div>
       </div>
     </td>
     <td valign="top">
       <div class="label"><strong>MoveLatteCup</strong> <span class="inst">- Put the latte art cup on top of the cutting board</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/lattecup.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/move_latte_cup/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.00</span></div></div>
+        <div class="cell"><video src="assets/sim/move_latte_cup/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim <span class="badge bad">0.00</span></div></div>
       </div>
     </td>
   </tr>
@@ -60,14 +67,14 @@
       <div class="label"><strong>OrganizeTools</strong> <span class="inst">- Put the scissor into the large container</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/scissor.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/organize_tools/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.00</span></div></div>
+        <div class="cell"><video src="assets/sim/organize_tools/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim <span class="badge bad">0.00</span></div></div>
       </div>
     </td>
     <td valign="top">
       <div class="label"><strong>TapeIntoContainer</strong> <span class="inst">- Put the tape into the container</span></div>
       <div class="pair">
         <div class="cell"><video src="assets/real/tape.mp4" controls loop muted preload="metadata"></video><div class="cap">real</div></div>
-        <div class="cell"><video src="assets/sim/tape_into_container/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim ep0 <span class="badge bad">0.33</span></div></div>
+        <div class="cell"><video src="assets/sim/tape_into_container/episode_0_mid.mp4" controls loop muted preload="metadata"></video><div class="cap">sim <span class="badge bad">0.33</span></div></div>
       </div>
     </td>
   </tr>
@@ -76,5 +83,56 @@
 <div class="footer">
   Sim: native 5120x1440 (exterior | wrist), 2x slow (7.5s). Real: 448x224, time-warped to 7.6s.
 </div>
+
+<h1 style="margin-top:48px">Trajectory figures</h1>
+<h2>FoodBussing <span style="font-size:13px;color:#888">(food_bussing)</span></h2>
+<div class="env2x2">
+  <div class="fcell"><img src="assets/figures/food_bussing/panel_1_joint_angles.png"></div>
+  <div class="fcell"><img src="assets/figures/food_bussing/panel_2_ee_path.png"></div>
+  <div class="fcell"><img src="assets/figures/food_bussing/panel_3_joint_torque.png"></div>
+  <div class="fcell"><img src="assets/figures/food_bussing/panel_5_action_vs_joint.png"></div>
+</div>
+<h2>BlockStackKitchen <span style="font-size:13px;color:#888">(block_stack_kitchen)</span></h2>
+<div class="env2x2">
+  <div class="fcell"><img src="assets/figures/block_stack_kitchen/panel_1_joint_angles.png"></div>
+  <div class="fcell"><img src="assets/figures/block_stack_kitchen/panel_2_ee_path.png"></div>
+  <div class="fcell"><img src="assets/figures/block_stack_kitchen/panel_3_joint_torque.png"></div>
+  <div class="fcell"><img src="assets/figures/block_stack_kitchen/panel_5_action_vs_joint.png"></div>
+</div>
+<h2>PanClean <span style="font-size:13px;color:#888">(pan_clean)</span></h2>
+<div class="env2x2">
+  <div class="fcell"><img src="assets/figures/pan_clean/panel_1_joint_angles.png"></div>
+  <div class="fcell"><img src="assets/figures/pan_clean/panel_2_ee_path.png"></div>
+  <div class="fcell"><img src="assets/figures/pan_clean/panel_3_joint_torque.png"></div>
+  <div class="fcell"><img src="assets/figures/pan_clean/panel_5_action_vs_joint.png"></div>
+</div>
+<h2>MoveLatteCup <span style="font-size:13px;color:#888">(move_latte_cup)</span></h2>
+<div class="env2x2">
+  <div class="fcell"><img src="assets/figures/move_latte_cup/panel_1_joint_angles.png"></div>
+  <div class="fcell"><img src="assets/figures/move_latte_cup/panel_2_ee_path.png"></div>
+  <div class="fcell"><img src="assets/figures/move_latte_cup/panel_3_joint_torque.png"></div>
+  <div class="fcell"><img src="assets/figures/move_latte_cup/panel_5_action_vs_joint.png"></div>
+</div>
+<h2>OrganizeTools <span style="font-size:13px;color:#888">(organize_tools)</span></h2>
+<div class="env2x2">
+  <div class="fcell"><img src="assets/figures/organize_tools/panel_1_joint_angles.png"></div>
+  <div class="fcell"><img src="assets/figures/organize_tools/panel_2_ee_path.png"></div>
+  <div class="fcell"><img src="assets/figures/organize_tools/panel_3_joint_torque.png"></div>
+  <div class="fcell"><img src="assets/figures/organize_tools/panel_5_action_vs_joint.png"></div>
+</div>
+<h2>TapeIntoContainer <span style="font-size:13px;color:#888">(tape_into_container)</span></h2>
+<div class="env2x2">
+  <div class="fcell"><img src="assets/figures/tape_into_container/panel_1_joint_angles.png"></div>
+  <div class="fcell"><img src="assets/figures/tape_into_container/panel_2_ee_path.png"></div>
+  <div class="fcell"><img src="assets/figures/tape_into_container/panel_3_joint_torque.png"></div>
+  <div class="fcell"><img src="assets/figures/tape_into_container/panel_5_action_vs_joint.png"></div>
+</div>
+
+<h2>Summary</h2>
+<div class="grid2">
+  <div class="fcell"><img src="assets/figures/summary/S1_success_rate.png"><div class="cap">S1 success rate</div></div>
+  <div class="fcell"><img src="assets/figures/summary/S2_avg_progress.png"><div class="cap">S2 avg progress</div></div>
+</div>
+
 </body>
 </html>

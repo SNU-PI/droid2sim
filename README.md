@@ -1,6 +1,5 @@
 # droid2sim
 
-Port of the Alchera-authored PanClean kitchen scene into Isaac Sim, with a
 Docker setup to render it headless or view it interactively in a browser.
 
 Scene assets live on Hugging Face
@@ -8,9 +7,6 @@ Scene assets live on Hugging Face
 this repo holds the code and Docker setup to run them.
 
 ## Reproduce
-
-Prereqs: Docker with the NVIDIA runtime, an NVIDIA GPU, and `huggingface-cli`
-(`pip install huggingface_hub`). Container image is pulled automatically.
 
 ```bash
 # 1. clone

@@ -15,10 +15,10 @@ cd droid2sim
 
 # 2. download the scene into data/panclean/
 huggingface-cli download Parkprogrammer/droid2sim --repo-type dataset \
-  --include "scenes/sample/panclean/*" \
+  --include "scenes/panclean/*" \
   --local-dir /tmp/hf-droid2sim
 mkdir -p data
-mv /tmp/hf-droid2sim/scenes/sample/panclean data/panclean
+mv /tmp/hf-droid2sim/scenes/panclean data/panclean
 
 # 3. start Isaac Sim (pick a free GPU; opens WebRTC + fixes data/ perms)
 ./scripts/docker/launch.sh -g 0
@@ -38,9 +38,14 @@ docker cp isim0-isaac-sim-1:/tmp/kitchen.png ./kitchen.png   # OUT_DIR defaults 
 
 ### View interactively (browser)
 
-Open `http://<server-ip>:8210/` (port is `8210 + GPU`). Connect to the server
-IP directly — an SSH tunnel will not work (WebRTC media is UDP). Details and
-live-scripting in [`docs/interactive_gui.md`](docs/interactive_gui.md).
+Open `http://<server-ip>:8210/` (port is `8210 + GPU`). `launch.sh` loads the
+kitchen into the live GUI once the container is healthy (framed through the
+`viewcam` camera), so the browser shows the scene directly — no manual open.
+
+Connect to the server IP directly — an SSH tunnel will not work (WebRTC media
+is UDP). To re-open the scene without restarting, run
+`./scripts/docker/open_scene.sh -g 0`. Details and live-scripting in
+[`docs/interactive_gui.md`](docs/interactive_gui.md).
 
 Stop with `./scripts/docker/down.sh -g 0`.
 

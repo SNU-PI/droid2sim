@@ -33,6 +33,12 @@ Wait until `docker ps` shows the isaac-sim container as `healthy` (~1-3 min).
   web-viewer is built with this baked in as its `signalingServer`.
 - Open `http://147.46.219.233:<8210+GPU>/` in a browser.
 
+`launch.sh` auto-loads the scene: once the container is healthy it runs
+`scripts/docker/open_scene.sh`, which sends `open_scene.py` to the live GUI to
+assemble the kitchen (`data/panclean/asset.usd` in the Z-up robot frame + dome/
+key light) and set the `viewcam` camera. So the browser shows the framed scene
+directly. Re-run `./scripts/docker/open_scene.sh -g <GPU>` to reload it.
+
 Why not SSH tunnel: `ssh -L` forwards **TCP only**. WebRTC media + STUN are
 **UDP**, so a tunnel gives you `StreamerNoStunResponsesReceived` /
 `WAITING FOR STREAM…` forever. Direct-IP works because the firewall already

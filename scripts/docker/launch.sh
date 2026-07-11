@@ -75,6 +75,17 @@ chmod 777 "${ISAAC_SIM_DATA}" 2>/dev/null || true
 
 docker compose -f docker/docker-compose.yml -p $profile_name up -d
 
+# Once the container is healthy, load the PanClean scene into the live GUI so the
+# browser shows the kitchen immediately (framed through /World/viewcam) instead
+# of an empty viewport. Runs in the background; launch.sh returns right away.
+if [ -f "${REPO_DIR}/data/panclean/asset.usd" ]; then
+  ( GPU_DEVICE=$GPU_DEVICE ISAACSIM_HOST=$ISAACSIM_HOST \
+    "${REPO_DIR}/scripts/docker/open_scene.sh" -g "$GPU_DEVICE" ) &
+else
+  echo "NOTE: data/panclean/asset.usd not found — download the scene from HF first;"
+  echo "      the browser will open an empty stage until then."
+fi
+
 echo "ISAAC_SIM_IMAGE: $ISAAC_SIM_IMAGE"
 echo "ISAAC_SIM_DATA: $ISAAC_SIM_DATA"
 echo "ISAACSIM_HUB_CACHE_PATH: $ISAACSIM_HUB_CACHE_PATH"

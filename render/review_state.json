@@ -1,0 +1,2059 @@
+{
+  "mode": "multi_scene_bbox_implementation_review",
+  "active_scene_id": "09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310",
+  "scenes": [
+    {
+      "id": "01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309",
+      "title": "01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309",
+      "task": "Move object to a new position and orientation (ex: grasping, relocating, flipping)",
+      "image": "assets/scenes/01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309/main_scene.jpg",
+      "video": "assets/scenes/01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "yellow_folded_towel",
+          "name": "yellow folded towel",
+          "overlay": {
+            "x": 15.0,
+            "y": 12.5,
+            "w": 20.0,
+            "h": 15.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309/bbox_crops/yellow_folded_towel.png"
+        },
+        {
+          "id": "red_ball_green_loop",
+          "name": "red ball with green loop",
+          "overlay": {
+            "x": 45.4,
+            "y": 40.0,
+            "w": 8.7,
+            "h": 12.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309/bbox_crops/red_ball_green_loop.png"
+        },
+        {
+          "id": "beige_round_object",
+          "name": "beige round object",
+          "overlay": {
+            "x": 34.0,
+            "y": 50.8,
+            "w": 9.4,
+            "h": 8.8
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309/bbox_crops/beige_round_object.png"
+        },
+        {
+          "id": "small_orange_floor_props",
+          "name": "small orange floor props under table",
+          "overlay": {
+            "x": 60.4,
+            "y": 61.5,
+            "w": 7.2,
+            "h": 12.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/01_rank002_RAIL__RAIL__fr3-290102-1324143__auto_0309/bbox_crops/small_orange_floor_props.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "yellow_folded_towel": {
+          "title": "yellow folded towel",
+          "items": [
+            {
+              "name": "yellow folded towel",
+              "checked": true
+            },
+            {
+              "name": "folded towel layers",
+              "checked": true
+            }
+          ]
+        },
+        "red_ball_green_loop": {
+          "title": "red ball with green loop",
+          "items": [
+            {
+              "name": "red ball",
+              "checked": true
+            },
+            {
+              "name": "green loop / strap",
+              "checked": true
+            }
+          ]
+        },
+        "beige_round_object": {
+          "title": "beige round object",
+          "items": [
+            {
+              "name": "beige round object",
+              "checked": true
+            }
+          ]
+        },
+        "small_orange_floor_props": {
+          "title": "small orange floor props under table",
+          "items": [
+            {
+              "name": "orange floor prop",
+              "checked": true
+            },
+            {
+              "name": "black floor prop",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559",
+      "title": "02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559",
+      "task": "Fold, spread out, or clump object (ex: cloth, charging cord, clothes)",
+      "image": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/main_scene.jpg",
+      "video": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "clear_bucket_blue_handles",
+          "name": "clear bucket with blue handles",
+          "overlay": {
+            "x": 54.0,
+            "y": 40.0,
+            "w": 17.5,
+            "h": 28.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/clear_bucket_blue_handles.png"
+        },
+        {
+          "id": "bucket_colored_contents",
+          "name": "colored pieces inside bucket",
+          "overlay": {
+            "x": 55.0,
+            "y": 47.5,
+            "w": 15.8,
+            "h": 20.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/bucket_colored_contents.png"
+        },
+        {
+          "id": "loose_table_blocks",
+          "name": "loose colored blocks on table",
+          "overlay": {
+            "x": 32.0,
+            "y": 53.0,
+            "w": 26.0,
+            "h": 29.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/loose_table_blocks.png"
+        },
+        {
+          "id": "blue_stacked_cups",
+          "name": "blue stacked cups",
+          "overlay": {
+            "x": 85.0,
+            "y": 62.5,
+            "w": 9.8,
+            "h": 26.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/blue_stacked_cups.png"
+        },
+        {
+          "id": "yellow_box_package",
+          "name": "yellow box/package",
+          "overlay": {
+            "x": 75.4,
+            "y": 60.0,
+            "w": 14.3,
+            "h": 12.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/yellow_box_package.png"
+        },
+        {
+          "id": "black_cloth_and_wrapped_item",
+          "name": "black cloth and wrapped item",
+          "overlay": {
+            "x": 27.2,
+            "y": 46.0,
+            "w": 23.5,
+            "h": 15.2
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/black_cloth_and_wrapped_item.png"
+        },
+        {
+          "id": "back_left_wire_bowl",
+          "name": "back-left wire bowl",
+          "overlay": {
+            "x": 12.2,
+            "y": 37.0,
+            "w": 8.0,
+            "h": 7.8
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/back_left_wire_bowl.png"
+        },
+        {
+          "id": "flat_tray_back_left",
+          "name": "flat tray / utensil at back-left",
+          "overlay": {
+            "x": 25.2,
+            "y": 36.8,
+            "w": 17.5,
+            "h": 7.4
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/02_rank003_WEIRD__Gates__G60__panda-295341-1325132__auto_0559/bbox_crops/flat_tray_back_left.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "clear_bucket_blue_handles": {
+          "title": "clear bucket with blue handles",
+          "items": [
+            {
+              "name": "clear bucket body",
+              "checked": true
+            },
+            {
+              "name": "blue handles",
+              "checked": true
+            },
+            {
+              "name": "bucket rim",
+              "checked": true
+            }
+          ]
+        },
+        "bucket_colored_contents": {
+          "title": "colored pieces inside bucket",
+          "items": [
+            {
+              "name": "purple toy piece",
+              "checked": true
+            },
+            {
+              "name": "green toy piece",
+              "checked": true
+            },
+            {
+              "name": "orange toy piece",
+              "checked": true
+            },
+            {
+              "name": "blue toy piece",
+              "checked": true
+            },
+            {
+              "name": "yellow toy piece",
+              "checked": true
+            },
+            {
+              "name": "generic bucket contents",
+              "checked": true
+            }
+          ]
+        },
+        "loose_table_blocks": {
+          "title": "loose colored blocks on table",
+          "items": [
+            {
+              "name": "purple block",
+              "checked": true
+            },
+            {
+              "name": "blue rectangular block",
+              "checked": true
+            },
+            {
+              "name": "mint block",
+              "checked": true
+            },
+            {
+              "name": "red rectangular block",
+              "checked": true
+            },
+            {
+              "name": "orange rectangular block",
+              "checked": true
+            },
+            {
+              "name": "yellow curved block",
+              "checked": true
+            }
+          ]
+        },
+        "blue_stacked_cups": {
+          "title": "blue stacked cups",
+          "items": [
+            {
+              "name": "blue stacked cups",
+              "checked": true
+            }
+          ]
+        },
+        "yellow_box_package": {
+          "title": "yellow box/package",
+          "items": [
+            {
+              "name": "yellow box/package",
+              "checked": true
+            }
+          ]
+        },
+        "black_cloth_and_wrapped_item": {
+          "title": "black cloth and wrapped item",
+          "items": [
+            {
+              "name": "black cloth",
+              "checked": true
+            },
+            {
+              "name": "wrapped snack-like item",
+              "checked": true
+            }
+          ]
+        },
+        "back_left_wire_bowl": {
+          "title": "back-left wire bowl",
+          "items": [
+            {
+              "name": "wire bowl / small basket",
+              "checked": true
+            },
+            {
+              "name": "green contents",
+              "checked": true
+            }
+          ]
+        },
+        "flat_tray_back_left": {
+          "title": "flat tray / utensil at back-left",
+          "items": [
+            {
+              "name": "flat tray",
+              "checked": true
+            },
+            {
+              "name": "slender utensil",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003",
+      "title": "03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003",
+      "task": "Move object into or out of container (ex: drawer, clothes hamper, plate, trashcan, washer)",
+      "image": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/main_scene.jpg",
+      "video": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "blue_nuc_boxes",
+          "name": "blue NUC boxes",
+          "overlay": {
+            "x": 36.0,
+            "y": 56.0,
+            "w": 15.8,
+            "h": 18.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/blue_nuc_boxes.png"
+        },
+        {
+          "id": "orange_tray_back_left",
+          "name": "orange tray/container",
+          "overlay": {
+            "x": 12.8,
+            "y": 55.0,
+            "w": 9.5,
+            "h": 7.8
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/orange_tray_back_left.png"
+        },
+        {
+          "id": "black_bowl_pan",
+          "name": "black bowl/pan",
+          "overlay": {
+            "x": 52.2,
+            "y": 56.0,
+            "w": 8.8,
+            "h": 12.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/black_bowl_pan.png"
+        },
+        {
+          "id": "wooden_number_peg_board",
+          "name": "wooden number / peg board",
+          "overlay": {
+            "x": 58.2,
+            "y": 72.0,
+            "w": 17.2,
+            "h": 23.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/wooden_number_peg_board.png"
+        },
+        {
+          "id": "round_tokens_cluster",
+          "name": "round tokens cluster",
+          "overlay": {
+            "x": 66.0,
+            "y": 69.0,
+            "w": 22.0,
+            "h": 23.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/round_tokens_cluster.png"
+        },
+        {
+          "id": "vertical_block_stack",
+          "name": "vertical block stack near gripper",
+          "overlay": {
+            "x": 60.5,
+            "y": 67.5,
+            "w": 7.0,
+            "h": 17.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/vertical_block_stack.png"
+        },
+        {
+          "id": "orange_platform_with_rods",
+          "name": "orange platform with rods",
+          "overlay": {
+            "x": 66.5,
+            "y": 57.2,
+            "w": 17.5,
+            "h": 12.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/orange_platform_with_rods.png"
+        },
+        {
+          "id": "loose_blue_piece",
+          "name": "loose blue piece at bottom edge",
+          "overlay": {
+            "x": 88.2,
+            "y": 94.0,
+            "w": 7.4,
+            "h": 5.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/03_rank004_AUTOLab__Autolab__FR3-295341-1326595__auto_0003/bbox_crops/loose_blue_piece.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "blue_nuc_boxes": {
+          "title": "blue NUC boxes",
+          "items": [
+            {
+              "name": "upper blue NUC box",
+              "checked": true
+            },
+            {
+              "name": "lower blue NUC box",
+              "checked": true
+            }
+          ]
+        },
+        "orange_tray_back_left": {
+          "title": "orange tray/container",
+          "items": [
+            {
+              "name": "orange tray/container",
+              "checked": true
+            }
+          ]
+        },
+        "black_bowl_pan": {
+          "title": "black bowl/pan",
+          "items": [
+            {
+              "name": "black bowl/pan",
+              "checked": true
+            }
+          ]
+        },
+        "wooden_number_peg_board": {
+          "title": "wooden number / peg board",
+          "items": [
+            {
+              "name": "wooden numbered board",
+              "checked": true
+            },
+            {
+              "name": "colored number shapes",
+              "checked": true
+            },
+            {
+              "name": "peg slots",
+              "checked": true
+            }
+          ]
+        },
+        "round_tokens_cluster": {
+          "title": "round tokens cluster",
+          "items": [
+            {
+              "name": "red round tokens",
+              "checked": true
+            },
+            {
+              "name": "orange round tokens",
+              "checked": true
+            },
+            {
+              "name": "yellow round tokens",
+              "checked": true
+            }
+          ]
+        },
+        "vertical_block_stack": {
+          "title": "vertical block stack near gripper",
+          "items": [
+            {
+              "name": "red vertical block",
+              "checked": true
+            },
+            {
+              "name": "yellow vertical block",
+              "checked": true
+            },
+            {
+              "name": "black vertical block",
+              "checked": true
+            }
+          ]
+        },
+        "orange_platform_with_rods": {
+          "title": "orange platform with rods",
+          "items": [
+            {
+              "name": "orange platform",
+              "checked": true
+            },
+            {
+              "name": "white rods / pegs",
+              "checked": true
+            },
+            {
+              "name": "yellow end block",
+              "checked": true
+            }
+          ]
+        },
+        "loose_blue_piece": {
+          "title": "loose blue piece at bottom edge",
+          "items": [
+            {
+              "name": "blue loose piece",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017",
+      "title": "04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017",
+      "task": "Do any two tasks consecutively.\n\nSuggested tasks:\n* Move object into or out of container (ex: drawer, clothes hamper, plate, trashcan, washer)\n* Move object into or out of container (ex: drawer, clothes hamper, plate, trashcan, washer)",
+      "image": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/main_scene.jpg",
+      "video": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "gray_cup_bowl",
+          "name": "gray cup/bowl",
+          "overlay": {
+            "x": 48.5,
+            "y": 64.0,
+            "w": 8.8,
+            "h": 11.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/gray_cup_bowl.png"
+        },
+        {
+          "id": "clear_tongs_piece",
+          "name": "clear tongs / transparent piece",
+          "overlay": {
+            "x": 34.5,
+            "y": 64.0,
+            "w": 14.0,
+            "h": 8.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/clear_tongs_piece.png"
+        },
+        {
+          "id": "clear_vertical_peg",
+          "name": "clear vertical peg / stand",
+          "overlay": {
+            "x": 51.2,
+            "y": 54.0,
+            "w": 5.5,
+            "h": 16.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/clear_vertical_peg.png"
+        },
+        {
+          "id": "yellow_green_red_cubes",
+          "name": "yellow green red cubes",
+          "overlay": {
+            "x": 61.0,
+            "y": 64.0,
+            "w": 17.0,
+            "h": 10.8
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/yellow_green_red_cubes.png"
+        },
+        {
+          "id": "orange_cylinders_stack",
+          "name": "orange cylinder stack",
+          "overlay": {
+            "x": 59.0,
+            "y": 72.0,
+            "w": 7.8,
+            "h": 12.2
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/orange_cylinders_stack.png"
+        },
+        {
+          "id": "right_yellow_stick",
+          "name": "right yellow stick",
+          "overlay": {
+            "x": 87.5,
+            "y": 74.5,
+            "w": 10.5,
+            "h": 4.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/right_yellow_stick.png"
+        },
+        {
+          "id": "rear_small_block_set",
+          "name": "rear small block set on black side table",
+          "overlay": {
+            "x": 23.8,
+            "y": 47.0,
+            "w": 17.5,
+            "h": 10.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/04_rank005_AUTOLab__BAIR__fr3-295341-1326595__auto_0017/bbox_crops/rear_small_block_set.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "gray_cup_bowl": {
+          "title": "gray cup/bowl",
+          "items": [
+            {
+              "name": "gray cup/bowl",
+              "checked": true
+            },
+            {
+              "name": "cup opening",
+              "checked": true
+            }
+          ]
+        },
+        "clear_tongs_piece": {
+          "title": "clear tongs / transparent piece",
+          "items": [
+            {
+              "name": "clear tongs",
+              "checked": true
+            },
+            {
+              "name": "transparent base piece",
+              "checked": true
+            }
+          ]
+        },
+        "clear_vertical_peg": {
+          "title": "clear vertical peg / stand",
+          "items": [
+            {
+              "name": "clear vertical peg",
+              "checked": true
+            },
+            {
+              "name": "clear base",
+              "checked": true
+            }
+          ]
+        },
+        "yellow_green_red_cubes": {
+          "title": "yellow green red cubes",
+          "items": [
+            {
+              "name": "yellow cube",
+              "checked": true
+            },
+            {
+              "name": "green cube",
+              "checked": true
+            },
+            {
+              "name": "red cube",
+              "checked": true
+            }
+          ]
+        },
+        "orange_cylinders_stack": {
+          "title": "orange cylinder stack",
+          "items": [
+            {
+              "name": "orange cylinders",
+              "checked": true
+            },
+            {
+              "name": "stacked cylinder body",
+              "checked": true
+            }
+          ]
+        },
+        "right_yellow_stick": {
+          "title": "right yellow stick",
+          "items": [
+            {
+              "name": "yellow stick",
+              "checked": true
+            }
+          ]
+        },
+        "rear_small_block_set": {
+          "title": "rear small block set on black side table",
+          "items": [
+            {
+              "name": "colored small block set",
+              "checked": true
+            },
+            {
+              "name": "small peg board",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552",
+      "title": "05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552",
+      "task": "Do anything you like that takes multiple steps to complete.",
+      "image": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/main_scene.jpg",
+      "video": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "green_yellow_package",
+          "name": "green/yellow package",
+          "overlay": {
+            "x": 18.0,
+            "y": 65.5,
+            "w": 22.0,
+            "h": 9.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/green_yellow_package.png"
+        },
+        {
+          "id": "two_white_bowls_contents",
+          "name": "two white bowls with contents",
+          "overlay": {
+            "x": 36.0,
+            "y": 60.5,
+            "w": 17.5,
+            "h": 13.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/two_white_bowls_contents.png"
+        },
+        {
+          "id": "red_cup_back",
+          "name": "red cup at back",
+          "overlay": {
+            "x": 44.8,
+            "y": 56.8,
+            "w": 7.5,
+            "h": 12.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/red_cup_back.png"
+        },
+        {
+          "id": "white_gray_can",
+          "name": "white/gray can",
+          "overlay": {
+            "x": 48.5,
+            "y": 67.5,
+            "w": 8.5,
+            "h": 15.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/white_gray_can.png"
+        },
+        {
+          "id": "blue_cup_holder",
+          "name": "blue cup holder",
+          "overlay": {
+            "x": 60.2,
+            "y": 65.0,
+            "w": 11.5,
+            "h": 17.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/blue_cup_holder.png"
+        },
+        {
+          "id": "red_bucket_marker_cup",
+          "name": "red bucket marker cup",
+          "overlay": {
+            "x": 65.0,
+            "y": 78.0,
+            "w": 26.5,
+            "h": 21.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/red_bucket_marker_cup.png"
+        },
+        {
+          "id": "loose_markers_scissors",
+          "name": "loose markers and scissors",
+          "overlay": {
+            "x": 66.5,
+            "y": 74.0,
+            "w": 26.0,
+            "h": 21.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/loose_markers_scissors.png"
+        },
+        {
+          "id": "blue_tool_under_gripper",
+          "name": "blue tool under gripper",
+          "overlay": {
+            "x": 50.0,
+            "y": 43.5,
+            "w": 20.5,
+            "h": 13.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/blue_tool_under_gripper.png"
+        },
+        {
+          "id": "black_small_tabletop_piece",
+          "name": "small black tabletop piece",
+          "overlay": {
+            "x": 45.2,
+            "y": 68.2,
+            "w": 5.8,
+            "h": 5.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/05_rank006_WEIRD__Gates__G60__panda-295341-1325132__auto_0552/bbox_crops/black_small_tabletop_piece.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "green_yellow_package": {
+          "title": "green/yellow package",
+          "items": [
+            {
+              "name": "green/yellow package",
+              "checked": true
+            }
+          ]
+        },
+        "two_white_bowls_contents": {
+          "title": "two white bowls with contents",
+          "items": [
+            {
+              "name": "left white bowl",
+              "checked": true
+            },
+            {
+              "name": "right white bowl",
+              "checked": true
+            },
+            {
+              "name": "bowl contents",
+              "checked": true
+            }
+          ]
+        },
+        "red_cup_back": {
+          "title": "red cup at back",
+          "items": [
+            {
+              "name": "red cup",
+              "checked": true
+            }
+          ]
+        },
+        "white_gray_can": {
+          "title": "white/gray can",
+          "items": [
+            {
+              "name": "white/gray can",
+              "checked": true
+            }
+          ]
+        },
+        "blue_cup_holder": {
+          "title": "blue cup holder",
+          "items": [
+            {
+              "name": "blue cup holder",
+              "checked": true
+            },
+            {
+              "name": "blue cup rim",
+              "checked": true
+            }
+          ]
+        },
+        "red_bucket_marker_cup": {
+          "title": "red bucket marker cup",
+          "items": [
+            {
+              "name": "red bucket",
+              "checked": true
+            },
+            {
+              "name": "markers inside bucket",
+              "checked": true
+            },
+            {
+              "name": "pens inside bucket",
+              "checked": true
+            }
+          ]
+        },
+        "loose_markers_scissors": {
+          "title": "loose markers and scissors",
+          "items": [
+            {
+              "name": "loose markers",
+              "checked": true
+            },
+            {
+              "name": "scissors",
+              "checked": true
+            },
+            {
+              "name": "black marker",
+              "checked": true
+            }
+          ]
+        },
+        "blue_tool_under_gripper": {
+          "title": "blue tool under gripper",
+          "items": [
+            {
+              "name": "blue tool / tray under gripper",
+              "checked": true
+            }
+          ]
+        },
+        "black_small_tabletop_piece": {
+          "title": "small black tabletop piece",
+          "items": [
+            {
+              "name": "small black tabletop piece",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007",
+      "title": "06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007",
+      "task": "Sort disks into cups by color.",
+      "image": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/main_scene.jpg",
+      "video": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "checkerboard_grid",
+          "name": "checkerboard grid board",
+          "overlay": {
+            "x": 42,
+            "y": 45,
+            "w": 24,
+            "h": 29
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/checkerboard_grid.png"
+        },
+        {
+          "id": "orange_disks_on_grid",
+          "name": "orange disks on grid",
+          "overlay": {
+            "x": 43,
+            "y": 47,
+            "w": 21,
+            "h": 27
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/orange_disks_on_grid.png"
+        },
+        {
+          "id": "loose_orange_disks",
+          "name": "loose orange disks around board",
+          "overlay": {
+            "x": 31,
+            "y": 42,
+            "w": 37,
+            "h": 43
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/loose_orange_disks.png"
+        },
+        {
+          "id": "white_cup_black_base",
+          "name": "white cup on black base",
+          "overlay": {
+            "x": 18,
+            "y": 48,
+            "w": 17,
+            "h": 25
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/white_cup_black_base.png"
+        },
+        {
+          "id": "clear_cup",
+          "name": "clear cup",
+          "overlay": {
+            "x": 34,
+            "y": 42,
+            "w": 10,
+            "h": 11
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/clear_cup.png"
+        },
+        {
+          "id": "number_board",
+          "name": "number board",
+          "overlay": {
+            "x": 28,
+            "y": 72,
+            "w": 19,
+            "h": 17
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/number_board.png"
+        },
+        {
+          "id": "right_button_fixture",
+          "name": "right button fixture",
+          "overlay": {
+            "x": 78,
+            "y": 63,
+            "w": 11,
+            "h": 14
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/06_rank010_AUTOLab__Autolab__FR3-295341-1326595__auto_0007/bbox_crops/right_button_fixture.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "checkerboard_grid": {
+          "title": "checkerboard grid board",
+          "items": [
+            {
+              "name": "checkerboard grid board",
+              "checked": true
+            },
+            {
+              "name": "grid cells",
+              "checked": true
+            }
+          ]
+        },
+        "orange_disks_on_grid": {
+          "title": "orange disks on grid",
+          "items": [
+            {
+              "name": "orange disks on grid",
+              "checked": true
+            }
+          ]
+        },
+        "loose_orange_disks": {
+          "title": "loose orange disks around board",
+          "items": [
+            {
+              "name": "loose orange disks",
+              "checked": true
+            },
+            {
+              "name": "orange disk near cup",
+              "checked": true
+            },
+            {
+              "name": "orange disk near board edge",
+              "checked": true
+            }
+          ]
+        },
+        "white_cup_black_base": {
+          "title": "white cup on black base",
+          "items": [
+            {
+              "name": "white cup",
+              "checked": true
+            },
+            {
+              "name": "black base / platform",
+              "checked": true
+            }
+          ]
+        },
+        "clear_cup": {
+          "title": "clear cup",
+          "items": [
+            {
+              "name": "clear cup",
+              "checked": true
+            }
+          ]
+        },
+        "number_board": {
+          "title": "number board",
+          "items": [
+            {
+              "name": "number board",
+              "checked": true
+            },
+            {
+              "name": "colored number pieces",
+              "checked": true
+            }
+          ]
+        },
+        "right_button_fixture": {
+          "title": "right button fixture",
+          "items": [
+            {
+              "name": "yellow button fixture",
+              "checked": true
+            },
+            {
+              "name": "red button top",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "07_rank011_RPL__AHG__panda-295341-1324688__auto_0359",
+      "title": "07_rank011_RPL__AHG__panda-295341-1324688__auto_0359",
+      "task": "pnp-table-to-plate-onlybars",
+      "image": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/main_scene.jpg",
+      "video": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "round_plate_tray",
+          "name": "round plate/tray",
+          "overlay": {
+            "x": 43,
+            "y": 45,
+            "w": 27,
+            "h": 25
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/bbox_crops/round_plate_tray.png"
+        },
+        {
+          "id": "colored_cups",
+          "name": "colored cups",
+          "overlay": {
+            "x": 42,
+            "y": 38,
+            "w": 25,
+            "h": 28
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/bbox_crops/colored_cups.png"
+        },
+        {
+          "id": "left_green_pack",
+          "name": "left green pack",
+          "overlay": {
+            "x": 28,
+            "y": 64,
+            "w": 9,
+            "h": 7
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/bbox_crops/left_green_pack.png"
+        },
+        {
+          "id": "black_wrapped_bar",
+          "name": "black wrapped bar",
+          "overlay": {
+            "x": 30,
+            "y": 73,
+            "w": 14,
+            "h": 6
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/bbox_crops/black_wrapped_bar.png"
+        },
+        {
+          "id": "orange_wrapped_bar",
+          "name": "orange wrapped bar",
+          "overlay": {
+            "x": 20,
+            "y": 81,
+            "w": 18,
+            "h": 8
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/bbox_crops/orange_wrapped_bar.png"
+        },
+        {
+          "id": "right_green_pack",
+          "name": "right green pack",
+          "overlay": {
+            "x": 72,
+            "y": 68,
+            "w": 10,
+            "h": 10
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/07_rank011_RPL__AHG__panda-295341-1324688__auto_0359/bbox_crops/right_green_pack.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "round_plate_tray": {
+          "title": "round plate/tray",
+          "items": [
+            {
+              "name": "round plate/tray",
+              "checked": true
+            }
+          ]
+        },
+        "colored_cups": {
+          "title": "colored cups",
+          "items": [
+            {
+              "name": "blue cup",
+              "checked": true
+            },
+            {
+              "name": "orange cup",
+              "checked": true
+            },
+            {
+              "name": "green cup",
+              "checked": true
+            },
+            {
+              "name": "magenta cup",
+              "checked": true
+            }
+          ]
+        },
+        "left_green_pack": {
+          "title": "left green pack",
+          "items": [
+            {
+              "name": "left green pack",
+              "checked": true
+            }
+          ]
+        },
+        "black_wrapped_bar": {
+          "title": "black wrapped bar",
+          "items": [
+            {
+              "name": "black wrapped bar",
+              "checked": true
+            }
+          ]
+        },
+        "orange_wrapped_bar": {
+          "title": "orange wrapped bar",
+          "items": [
+            {
+              "name": "orange wrapped bar",
+              "checked": true
+            }
+          ]
+        },
+        "right_green_pack": {
+          "title": "right green pack",
+          "items": [
+            {
+              "name": "right green pack",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019",
+      "title": "08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019",
+      "task": "put stuff in/out of a open plastic bag",
+      "image": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/main_scene.jpg",
+      "video": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "white_plastic_bag",
+          "name": "white plastic bag",
+          "overlay": {
+            "x": 33,
+            "y": 30,
+            "w": 27,
+            "h": 36
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/bbox_crops/white_plastic_bag.png"
+        },
+        {
+          "id": "bag_initial_contents",
+          "name": "items inside/at bag opening",
+          "overlay": {
+            "x": 48,
+            "y": 30,
+            "w": 17,
+            "h": 20
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/bbox_crops/bag_initial_contents.png"
+        },
+        {
+          "id": "brown_plush_object",
+          "name": "brown plush-like object",
+          "overlay": {
+            "x": 58,
+            "y": 27,
+            "w": 17,
+            "h": 21
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/bbox_crops/brown_plush_object.png"
+        },
+        {
+          "id": "front_toy_set",
+          "name": "front toy set",
+          "overlay": {
+            "x": 22,
+            "y": 53,
+            "w": 27,
+            "h": 28
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/bbox_crops/front_toy_set.png"
+        },
+        {
+          "id": "green_rectangular_block",
+          "name": "green rectangular block",
+          "overlay": {
+            "x": 52,
+            "y": 55,
+            "w": 10,
+            "h": 20
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/08_rank015_AUTOLab__Berkeley__Way__West__FR3-295341-1326595__auto_0019/bbox_crops/green_rectangular_block.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "white_plastic_bag": {
+          "title": "white plastic bag",
+          "items": [
+            {
+              "name": "white plastic bag",
+              "checked": true
+            },
+            {
+              "name": "bag handles",
+              "checked": true
+            },
+            {
+              "name": "bag opening",
+              "checked": true
+            }
+          ]
+        },
+        "bag_initial_contents": {
+          "title": "items inside/at bag opening",
+          "items": [
+            {
+              "name": "small red item",
+              "checked": true
+            },
+            {
+              "name": "small green item",
+              "checked": true
+            },
+            {
+              "name": "small yellow item",
+              "checked": true
+            },
+            {
+              "name": "small light-colored item",
+              "checked": true
+            }
+          ]
+        },
+        "brown_plush_object": {
+          "title": "brown plush-like object",
+          "items": [
+            {
+              "name": "brown plush-like object",
+              "checked": true
+            }
+          ]
+        },
+        "front_toy_set": {
+          "title": "front toy set",
+          "items": [
+            {
+              "name": "orange cone/cup",
+              "checked": true
+            },
+            {
+              "name": "yellow block",
+              "checked": true
+            },
+            {
+              "name": "purple cup",
+              "checked": true
+            },
+            {
+              "name": "small green piece",
+              "checked": true
+            },
+            {
+              "name": "small red piece",
+              "checked": true
+            }
+          ]
+        },
+        "green_rectangular_block": {
+          "title": "green rectangular block",
+          "items": [
+            {
+              "name": "green rectangular block",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310",
+      "title": "09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310",
+      "task": "Move object into or out of container (ex: drawer, clothes hamper, plate, trashcan, washer)",
+      "image": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/main_scene.jpg",
+      "video": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "toy_stovetop_burner_set",
+          "name": "toy stovetop / burner set",
+          "overlay": {
+            "x": 52,
+            "y": 67,
+            "w": 25,
+            "h": 30
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/toy_stovetop_burner_set.png"
+        },
+        {
+          "id": "toy_sink_faucet",
+          "name": "toy sink with faucet",
+          "overlay": {
+            "x": 30,
+            "y": 57,
+            "w": 21,
+            "h": 28
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/toy_sink_faucet.png"
+        },
+        {
+          "id": "white_bowl",
+          "name": "white bowl",
+          "overlay": {
+            "x": 38,
+            "y": 78,
+            "w": 13,
+            "h": 20
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/white_bowl.png"
+        },
+        {
+          "id": "metal_bowl_pan",
+          "name": "metal bowl / pan",
+          "overlay": {
+            "x": 29,
+            "y": 81,
+            "w": 11,
+            "h": 17
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/metal_bowl_pan.png"
+        },
+        {
+          "id": "blue_tray_bin",
+          "name": "blue rectangular tray/bin",
+          "overlay": {
+            "x": 52,
+            "y": 49,
+            "w": 27,
+            "h": 19
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/blue_tray_bin.png"
+        },
+        {
+          "id": "small_toy_food_props",
+          "name": "small colored toy food / prop pieces",
+          "overlay": {
+            "x": 48,
+            "y": 72,
+            "w": 24,
+            "h": 24
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/small_toy_food_props.png"
+        },
+        {
+          "id": "orange_cloth_prop",
+          "name": "orange cloth / plush prop",
+          "overlay": {
+            "x": 0,
+            "y": 68,
+            "w": 23,
+            "h": 30
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/orange_cloth_prop.png"
+        },
+        {
+          "id": "metal_bowl_contents",
+          "name": "contents inside metal bowl / pan",
+          "overlay": {
+            "x": 30.5,
+            "y": 85.0,
+            "w": 8.5,
+            "h": 8.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/metal_bowl_contents.png"
+        },
+        {
+          "id": "white_bowl_contents",
+          "name": "contents inside white bowl",
+          "overlay": {
+            "x": 40.0,
+            "y": 82.5,
+            "w": 9.5,
+            "h": 10.5
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/white_bowl_contents.png"
+        },
+        {
+          "id": "blue_tray_behind_sink_faucet",
+          "name": "blue rectangular tray behind sink/faucet",
+          "overlay": {
+            "x": 29.0,
+            "y": 50.0,
+            "w": 20.0,
+            "h": 15.0
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/09_rank023_RAIL__RAIL__fr3-290102-1324143__auto_0310/bbox_crops/blue_tray_behind_sink_faucet.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "toy_stovetop_burner_set": {
+          "title": "toy stovetop / burner set",
+          "items": [
+            {
+              "name": "toy stovetop surface",
+              "checked": true
+            },
+            {
+              "name": "burner grates",
+              "checked": true
+            },
+            {
+              "name": "front stove knobs",
+              "checked": true
+            },
+            {
+              "name": "generic stove fixture body",
+              "checked": true
+            }
+          ]
+        },
+        "toy_sink_faucet": {
+          "title": "toy sink with faucet",
+          "items": [
+            {
+              "name": "toy sink basin",
+              "checked": true
+            },
+            {
+              "name": "faucet",
+              "checked": true
+            },
+            {
+              "name": "faucet handle / twistable part",
+              "checked": true
+            },
+            {
+              "name": "drain-board surface",
+              "checked": true
+            }
+          ]
+        },
+        "white_bowl": {
+          "title": "white bowl area",
+          "items": [
+            {
+              "name": "white bowl",
+              "checked": true
+            },
+            {
+              "name": "green toy food prop",
+              "checked": true
+            },
+            {
+              "name": "yellow toy food prop",
+              "checked": true
+            },
+            {
+              "name": "generic small bowl contents",
+              "checked": true
+            }
+          ]
+        },
+        "metal_bowl_pan": {
+          "title": "metal bowl / pan area",
+          "items": [
+            {
+              "name": "metal bowl / pan",
+              "checked": true
+            },
+            {
+              "name": "small utensil or toy prop inside/near pan",
+              "checked": true
+            },
+            {
+              "name": "generic small pan contents",
+              "checked": true
+            }
+          ]
+        },
+        "blue_tray_bin": {
+          "title": "blue rectangular tray/bin",
+          "items": [
+            {
+              "name": "blue rectangular tray/bin",
+              "checked": true
+            },
+            {
+              "name": "red toy food props",
+              "checked": true
+            },
+            {
+              "name": "green toy vegetable props",
+              "checked": true
+            },
+            {
+              "name": "generic tray contents",
+              "checked": true
+            }
+          ]
+        },
+        "small_toy_food_props": {
+          "title": "small colored toy food / prop pieces",
+          "items": [
+            {
+              "name": "pink toy prop",
+              "checked": true
+            },
+            {
+              "name": "green toy prop",
+              "checked": true
+            },
+            {
+              "name": "orange toy prop cluster",
+              "checked": true
+            },
+            {
+              "name": "generic colored toy prop set",
+              "checked": true
+            }
+          ]
+        },
+        "orange_cloth_prop": {
+          "title": "orange cloth / plush prop",
+          "items": [
+            {
+              "name": "orange cloth / towel / plush-like object",
+              "checked": true
+            },
+            {
+              "name": "cloth-like interaction affordance",
+              "checked": true
+            }
+          ]
+        },
+        "metal_bowl_contents": {
+          "title": "contents inside metal bowl / pan",
+          "items": [
+            {
+              "name": "small utensil/content piece",
+              "checked": true
+            },
+            {
+              "name": "generic pan contents",
+              "checked": true
+            }
+          ]
+        },
+        "white_bowl_contents": {
+          "title": "contents inside white bowl",
+          "items": [
+            {
+              "name": "green toy food piece",
+              "checked": true
+            },
+            {
+              "name": "yellow toy food piece",
+              "checked": true
+            },
+            {
+              "name": "generic bowl contents set",
+              "checked": true
+            }
+          ]
+        },
+        "blue_tray_behind_sink_faucet": {
+          "title": "blue rectangular tray behind sink/faucet",
+          "items": [
+            {
+              "name": "blue rectangular tray behind sink/faucet",
+              "checked": true
+            },
+            {
+              "name": "generic tray contents / clutter",
+              "checked": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526",
+      "title": "10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526",
+      "task": "Use cup to pour something granular (ex: nuts, rice, dried pasta, coffee beans)",
+      "image": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/main_scene.jpg",
+      "video": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/sample_video_ext1.mp4",
+      "assets": [
+        {
+          "id": "open_box_with_contents",
+          "name": "open box with contents",
+          "overlay": {
+            "x": 35,
+            "y": 68,
+            "w": 17,
+            "h": 17
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/open_box_with_contents.png"
+        },
+        {
+          "id": "box_contents",
+          "name": "box contents",
+          "overlay": {
+            "x": 36.5,
+            "y": 69.5,
+            "w": 15,
+            "h": 13
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/box_contents.png"
+        },
+        {
+          "id": "left_round_case",
+          "name": "left round case",
+          "overlay": {
+            "x": 17,
+            "y": 80,
+            "w": 17,
+            "h": 17
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/left_round_case.png"
+        },
+        {
+          "id": "orange_bowl",
+          "name": "orange bowl",
+          "overlay": {
+            "x": 46,
+            "y": 70,
+            "w": 19,
+            "h": 23
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/orange_bowl.png"
+        },
+        {
+          "id": "right_blue_block",
+          "name": "right blue rectangular object",
+          "overlay": {
+            "x": 67,
+            "y": 79,
+            "w": 9,
+            "h": 9
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/right_blue_block.png"
+        },
+        {
+          "id": "clear_pitcher_cup",
+          "name": "clear pitcher/cup",
+          "overlay": {
+            "x": 41,
+            "y": 56,
+            "w": 13,
+            "h": 18
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/clear_pitcher_cup.png"
+        },
+        {
+          "id": "granular_pile_plate",
+          "name": "granular pile on white plate",
+          "overlay": {
+            "x": 50,
+            "y": 58,
+            "w": 13,
+            "h": 11
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/granular_pile_plate.png"
+        },
+        {
+          "id": "dark_blue_cup",
+          "name": "dark blue cup",
+          "overlay": {
+            "x": 53,
+            "y": 51,
+            "w": 10,
+            "h": 15
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/dark_blue_cup.png"
+        },
+        {
+          "id": "bottle_and_small_container_group",
+          "name": "bottle and small container group",
+          "overlay": {
+            "x": 36,
+            "y": 43,
+            "w": 17,
+            "h": 21
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/bottle_and_small_container_group.png"
+        },
+        {
+          "id": "rear_cardboard_box",
+          "name": "rear cardboard box",
+          "overlay": {
+            "x": 60,
+            "y": 38,
+            "w": 11,
+            "h": 14
+          },
+          "visible": true,
+          "bbox_crop_png": "assets/scenes/10_rank024_TRI__TRI__fr3-295341-1326895__auto_0526/bbox_crops/rear_cardboard_box.png"
+        }
+      ],
+      "bbox_implementation_details": {
+        "open_box_with_contents": {
+          "title": "open box with contents",
+          "items": [
+            {
+              "name": "open white box",
+              "checked": true
+            },
+            {
+              "name": "box compartments",
+              "checked": true
+            }
+          ]
+        },
+        "box_contents": {
+          "title": "box contents",
+          "items": [
+            {
+              "name": "green object in box",
+              "checked": true
+            },
+            {
+              "name": "yellow object in box",
+              "checked": true
+            },
+            {
+              "name": "blue object in box",
+              "checked": true
+            },
+            {
+              "name": "long blue object in box",
+              "checked": true
+            }
+          ]
+        },
+        "left_round_case": {
+          "title": "left round case",
+          "items": [
+            {
+              "name": "left round case",
+              "checked": true
+            },
+            {
+              "name": "case lid",
+              "checked": true
+            },
+            {
+              "name": "fiducial marker top",
+              "checked": true
+            }
+          ]
+        },
+        "orange_bowl": {
+          "title": "orange bowl",
+          "items": [
+            {
+              "name": "orange bowl",
+              "checked": true
+            },
+            {
+              "name": "bowl opening",
+              "checked": true
+            }
+          ]
+        },
+        "right_blue_block": {
+          "title": "right blue rectangular object",
+          "items": [
+            {
+              "name": "right blue rectangular object",
+              "checked": true
+            }
+          ]
+        },
+        "clear_pitcher_cup": {
+          "title": "clear pitcher/cup",
+          "items": [
+            {
+              "name": "clear pitcher/cup",
+              "checked": true
+            },
+            {
+              "name": "clear handle",
+              "checked": true
+            },
+            {
+              "name": "cup opening",
+              "checked": true
+            }
+          ]
+        },
+        "granular_pile_plate": {
+          "title": "granular pile on white plate",
+          "items": [
+            {
+              "name": "white plate",
+              "checked": true
+            },
+            {
+              "name": "brown granular pile",
+              "checked": true
+            },
+            {
+              "name": "loose granules",
+              "checked": true
+            }
+          ]
+        },
+        "dark_blue_cup": {
+          "title": "dark blue cup",
+          "items": [
+            {
+              "name": "dark blue cup",
+              "checked": true
+            },
+            {
+              "name": "cup opening",
+              "checked": true
+            }
+          ]
+        },
+        "bottle_and_small_container_group": {
+          "title": "bottle and small container group",
+          "items": [
+            {
+              "name": "white bottle",
+              "checked": true
+            },
+            {
+              "name": "yellow cylinder",
+              "checked": true
+            },
+            {
+              "name": "red cup/object",
+              "checked": true
+            },
+            {
+              "name": "small black cylinder",
+              "checked": true
+            },
+            {
+              "name": "small clear container",
+              "checked": true
+            }
+          ]
+        },
+        "rear_cardboard_box": {
+          "title": "rear cardboard box",
+          "items": [
+            {
+              "name": "rear cardboard box",
+              "checked": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "notes": "01-08 and 10 were redone from 20 sampled frames per scene; 09 preserved from manual feedback."
+}

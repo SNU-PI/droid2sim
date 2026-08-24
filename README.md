@@ -1,17 +1,12 @@
 # vjepa-physics-probe
 
-Can physical parameters (mass, friction, restitution) be read out of a frozen
-video world model, for labeling object physics in real2sim?
+Reading physical parameters (mass, friction, restitution) out of frozen
+V-JEPA 2 features, to label object physics for real2sim.
 
-**In sim: yes.** A linear probe on frozen V-JEPA 2-AC features recovers
-observable parameters at held-out R² 0.91–0.99 across five verified MuJoCo
-interactions, matching a physics-oracle baseline — and fails exactly where
-physics says the parameter is unobservable. Robust to camera/lighting shifts
-that break raw-pixel baselines.
-
-**Sim-to-real: partial.** Motion-channel features bring real DROID clips into
-the sim distribution, but the probe does not yet read physics from real
-footage (sim strikes and releases; DROID pushes keep contact).
+**In sim:** linear probe reaches R² 0.91–0.99 on observable parameters across
+five verified MuJoCo interactions; fails exactly where physics forbids.
+**Sim-to-real:** motion-only features close the distribution gap on DROID
+clips, but real-footage physics is not read yet.
 
 ## Layout
 

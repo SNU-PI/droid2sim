@@ -1,0 +1,7 @@
+# large data on /data via symlinks — never commit
+data
+ckpt
+out
+__pycache__/
+*.pyc
+nohup.out

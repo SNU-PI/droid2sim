@@ -16,14 +16,15 @@ reference no longer reproduces is discarded whole.
 import sys, os, argparse
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("MUJOCO_GL", "egl")
 os.environ.setdefault("MUJOCO_EGL_DEVICE_ID", "2")
 
 import mujoco
-from scenes import Scene, FAMILIES, PARAMS, FRAME_IDX, sample_params
+from core.scenes import Scene, FAMILIES, PARAMS, FRAME_IDX, sample_params
 
-ROOT = os.environ.get("EP_DIR", "/data/pgc/simdroid/episodes")
+from core.paths import EP_DIR
+ROOT = str(EP_DIR)
 REF_TOL = 0.05
 NUIS = {"clean": None, "camera": ("camera", 0.010), "light": ("light", 0.20)}
 

@@ -80,9 +80,9 @@ def main():
 
     print(f"<!-- {len(geoms)} static Franka geoms, {len(meshes)} meshes -->",
           file=sys.stderr)
-    with open(f"src/franka_asset{OUTTAG}.xml", "w") as f:
+    with open(os.path.join(sys_root, "core", f"franka_asset{OUTTAG}.xml"), "w") as f:
         f.write(asset + "\n")
-    with open(f"src/franka_body{OUTTAG}.xml", "w") as f:
+    with open(os.path.join(sys_root, "core", f"franka_body{OUTTAG}.xml"), "w") as f:
         f.write(body + "\n")
     print(f"wrote src/franka_asset.xml ({len(meshes)} meshes) and "
           f"src/franka_body.xml ({len(geoms)} geoms)", file=sys.stderr)

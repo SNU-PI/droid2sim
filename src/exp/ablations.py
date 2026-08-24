@@ -16,15 +16,14 @@ camera augmentation the probe's one weakness was a 1 cm camera shift. If
 import sys, os, json, argparse
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(__file__))
-from sklearn.linear_model import RidgeCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from sklearn.metrics import r2_score
-from scenes import PARAMS
 
-FEAT = os.environ.get("FEAT_DIR", "/data/pgc/simdroid/features")
-ALPHAS = np.logspace(-1, 6, 22)
+from core.probe import LinearProbe
+from core.paths import FEAT_DIR
+from core.scenes import PARAMS
+
+FEAT = str(FEAT_DIR)
 
 
 def load(fam, sub):
@@ -33,19 +32,10 @@ def load(fam, sub):
 
 
 def fit_eval(Xtr, ytr, tests, npca=96):
-    sc = StandardScaler().fit(Xtr)
-    Z = sc.transform(Xtr)
-    pca = None
-    if Z.shape[1] > npca and Z.shape[0] > 8:
-        pca = PCA(n_components=min(npca, Z.shape[0] - 1)).fit(Z)
-        Z = pca.transform(Z)
-    mdl = RidgeCV(alphas=ALPHAS).fit(Z, ytr)
+    probe = LinearProbe(npca=npca).fit(Xtr, ytr)
     out = {}
     for name, (Xt, yt) in tests.items():
-        Zt = sc.transform(Xt)
-        if pca is not None:
-            Zt = pca.transform(Zt)
-        pr = mdl.predict(Zt)
+        pr = probe.predict(Xt)
         out[name] = [float(r2_score(yt[:, i], pr[:, i])) for i in range(yt.shape[1])]
     return out
 

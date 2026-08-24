@@ -106,7 +106,7 @@ def sphere_inertia(mass, r):
     return np.array([v, v, v])
 
 
-# ---------------------------------------------------------------- bodies ----
+
 PUSHER = """
     <body name="pusher" pos="0 0 {pz}">
       <joint name="rail" type="slide" axis="0 1 0" damping="0" frictionloss="0"
@@ -264,7 +264,7 @@ class Scene:
             self.v2 = self.model.jnt_dofadr[mujoco.mj_name2id(
                 self.model, mujoco.mjtObj.mjOBJ_JOINT, "obj2free")]
 
-    # ---- parameters --------------------------------------------------------
+    # parameters
     def set_params(self, p):
         m = self.model
         f = self.family

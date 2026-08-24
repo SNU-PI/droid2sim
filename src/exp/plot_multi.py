@@ -18,7 +18,7 @@ fig = plt.figure(figsize=(16, 18)); fig.patch.set_facecolor("white")
 gs = fig.add_gridspec(4, 2, hspace=0.34, wspace=0.22,
                       height_ratios=[1.25, 1.0, 1.0, 1.0])
 
-# ---- (0,0) gallery
+# (0,0) gallery
 ax = fig.add_subplot(gs[0, 0])
 ax.imshow(iio.imread("out/multi/gallery.png"))
 ax.set_xticks([]); ax.set_yticks([]); ax.grid(False)
@@ -28,7 +28,7 @@ for i, f in enumerate(FAMS):
 ax.set_title("five interaction families, all physics-verified (5/5 checks)",
              loc="left", fontweight="bold", fontsize=12)
 
-# ---- (0,1) main heatmap: linear probe R2 vs physics oracle, clean
+# (0,1) main heatmap: linear probe R2 vs physics oracle, clean
 ax = fig.add_subplot(gs[0, 1])
 rows, labels, oracle = [], [], []
 for f in FAMS:
@@ -49,7 +49,7 @@ ax.set_title("held-out R² per parameter (clean test)\nV-JEPA matches or beats t
              "wherever physics permits", loc="left", fontweight="bold", fontsize=12)
 ax.grid(False); plt.colorbar(im, ax=ax, fraction=0.03)
 
-# ---- (1,:) robustness: clean/camera/light for pixels vs vjepa vs vjepa-aug
+# (1,:) robustness: clean/camera/light for pixels vs vjepa vs vjepa-aug
 ax = fig.add_subplot(gs[1, :])
 obs = [(f, n) for f in FAMS for n in NAMES[f] if (f, n) not in UNOBS]
 x = np.arange(len(obs)); w = 0.26
@@ -74,7 +74,7 @@ ax.set_title("the one weakness (viewpoint shift) is trainable away",
 ax.legend(fontsize=9.5, frameon=False, ncol=3)
 ax.grid(alpha=0.25, axis="y"); ax.spines[["top", "right"]].set_visible(False)
 
-# ---- (2,0) frame-count curves
+# (2,0) frame-count curves
 ax = fig.add_subplot(gs[2, 0])
 picks = [("slide", "mass", C_P, "-"), ("slide", "mu", C_P, "--"),
          ("bounce", "damping", C_N, "-"), ("collide", "mass2", C_A, "-"),
@@ -92,7 +92,7 @@ ax.set_title("each parameter becomes readable exactly when\nits physics plays ou
 ax.legend(fontsize=9, frameon=False, loc="lower right")
 ax.grid(alpha=0.25); ax.spines[["top", "right"]].set_visible(False)
 
-# ---- (2,1) sample efficiency
+# (2,1) sample efficiency
 ax = fig.add_subplot(gs[2, 1])
 for f, c in zip(FAMS, [C_P, C_O, C_N, C_A, "#8d5a97"]):
     ns, vs = [], []
@@ -108,7 +108,7 @@ ax.set_title("50-100 episodes calibrate a scene", loc="left",
 ax.legend(fontsize=9, frameon=False, loc="lower right")
 ax.grid(alpha=0.25); ax.spines[["top", "right"]].set_visible(False)
 
-# ---- (3,0) observability control
+# (3,0) observability control
 ax = fig.add_subplot(gs[3, 0])
 pairs = [("bounce", "mass"), ("incline", "mass")]
 x = np.arange(2); w = 0.35
@@ -127,7 +127,7 @@ ax.set_title("negative control: where physics says the parameter is\n"
 ax.legend(fontsize=9.5, frameon=False)
 ax.grid(alpha=0.25, axis="y"); ax.spines[["top", "right"]].set_visible(False)
 
-# ---- (3,1) pixels catastrophic failure
+# (3,1) pixels catastrophic failure
 ax = fig.add_subplot(gs[3, 1])
 subs = ["test_clean", "test_camera", "test_light"]
 labs = ["clean", "camera 1 cm", "light +20%"]

@@ -11,10 +11,10 @@ form for its mechanism:
 """
 import sys, os
 import numpy as np
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("MUJOCO_GL", "egl")
 os.environ.setdefault("MUJOCO_EGL_DEVICE_ID", "2")
-from scenes import Scene, CTRL_DT, TABLE_TOP_Z, G
+from core.scenes import Scene, CTRL_DT, TABLE_TOP_Z, G
 
 RAMP_T = 0.45          # must match the ramp euler in scenes.py
 RES = []

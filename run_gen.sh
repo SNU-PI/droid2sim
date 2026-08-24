@@ -10,7 +10,7 @@ for fam in "$@"; do
   for spec in "train clean 250" "test clean 80" "test camera 80" "test light 80"; do
     set -- $spec; split=$1; var=$2; tot=$3
     for pass in $(seq 1 250); do
-      python -u src/gen_episodes.py --family $fam --split $split --variant $var \
+      python -u src/gen/gen_episodes.py --family $fam --split $split --variant $var \
              --total $tot --batch 5 >> $LOG 2>&1
       n=$(ls $EP_DIR/$fam/${split}_${var}/*.npz 2>/dev/null | wc -l)
       [ "$n" -ge "$tot" ] && break

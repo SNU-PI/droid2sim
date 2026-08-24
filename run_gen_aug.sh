@@ -8,7 +8,7 @@ export EP_DIR=/data/pgc/simdroid/episodes
 LOG=out/multi/gen_aug_dev$DEV.log
 for fam in "$@"; do
   for pass in $(seq 1 250); do
-    python -u src/gen_episodes.py --family $fam --split train --variant camera \
+    python -u src/gen/gen_episodes.py --family $fam --split train --variant camera \
            --total 250 --batch 5 >> $LOG 2>&1
     n=$(ls $EP_DIR/$fam/train_camera/*.npz 2>/dev/null | wc -l)
     [ "$n" -ge 250 ] && break

@@ -1,48 +1,38 @@
 """Can the physical parameters be read back out of the representation?
 
-Stage 0 asked whether a hand-written L1 distance could locate the right
-physics, and it could not. That leaves two very different explanations: the
-information is absent, or it is present but not in a form that distance
-happens to expose. A probe separates them. If a linear read-out of the frozen
-features recovers mass and friction, the information is there and the earlier
-failure was the metric's fault; if it does not, the representation genuinely
-does not carry it.
+A linear probe on frozen features separates two explanations of the stage-0
+failure: the information is absent, or it is present and the hand-written
+distance simply could not expose it.
 
-Four feature sets are compared, and the two baselines are the point:
+Two baselines carry the argument:
 
-    physics   the true trajectory summary -> an upper bound on what any
-              visual system could recover from this episode
-    pixels    downsampled raw frames -> what you get for free without a
-              world model at all; V-JEPA has to beat this to be worth anything
-    vjepa     per-frame pooled encoder features
-    vjepa+d   the same, plus frame-to-frame differences, which is where the
-              decay that encodes friction actually lives
+    physics   the true trajectory summary from the simulator, an upper bound
+              on what any visual system could recover from the episode
+    pixels    downsampled raw frames, what you get with no world model at all
 
-Scoring is on held-out episodes, and also on the same episodes re-rendered
-with the camera moved and the lights changed. A probe that only works on the
-clean render is reading the scene, not the physics.
+Scoring is on held-out episodes, and on the same episodes re-rendered with the
+camera moved and the lights changed. A probe that only works on the clean
+render is reading the scene, not the physics.
 """
+
 import sys, os, glob, json, argparse
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(__file__))
-from sklearn.linear_model import RidgeCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from sklearn.metrics import r2_score
 
-FEAT = os.environ.get("FEAT_DIR", "/data/pgc/simdroid/features")
-ROOT = os.environ.get("EP_DIR", "/data/pgc/simdroid/episodes")
-from scenes import PARAMS
+from core.probe import LinearProbe
+from core.paths import EP_DIR, FEAT_DIR
+from core.scenes import PARAMS
 
-ALPHAS = np.logspace(-1, 6, 22)
+FEAT, ROOT = str(FEAT_DIR), str(EP_DIR)
 
 
 def pixel_feats(fam, sub):
     fs = sorted(glob.glob(f"{ROOT}/{fam}/{sub}/*.npz"))
     out = []
     for f in fs:
-        c = np.load(f)["clip"].astype(np.float32) / 255.0     # [T,H,W,3]
+        c = np.load(f)["clip"].astype(np.float32) / 255.0
         t, h, w, _ = c.shape
         g = c.reshape(t, 16, h // 16, 16, w // 16, 3).mean(axis=(2, 4))
         out.append(g.reshape(-1))
@@ -55,7 +45,7 @@ def build_features(fam, sub, kind):
         return d["phys"].astype(np.float64)
     if kind == "pixels":
         return pixel_feats(fam, sub).astype(np.float64)
-    m = d["mean"].astype(np.float32)                       # [N, T, D]
+    m = d["mean"].astype(np.float32)
     if kind == "vjepa":
         return m.reshape(len(m), -1).astype(np.float64)
     if kind == "vjepa+d":
@@ -65,7 +55,7 @@ def build_features(fam, sub, kind):
     raise ValueError(kind)
 
 
-def run_family(fam, kinds, npca=96):
+def run_family(fam, kinds):
     names = [n for n, _, _ in PARAMS[fam]]
     ytr = np.log(np.load(f"{FEAT}/{fam}__train_clean.npz")["params"])
     res = {}
@@ -74,13 +64,7 @@ def run_family(fam, kinds, npca=96):
             Xtr = build_features(fam, "train_clean", kind)
         except FileNotFoundError:
             continue
-        sc = StandardScaler().fit(Xtr)
-        Z = sc.transform(Xtr)
-        pca = None
-        if Z.shape[1] > npca:
-            pca = PCA(n_components=min(npca, Z.shape[0] - 1)).fit(Z)
-            Z = pca.transform(Z)
-        model = RidgeCV(alphas=ALPHAS).fit(Z, ytr)
+        probe = LinearProbe().fit(Xtr, ytr)
         row = {}
         for sub in ("test_clean", "test_camera", "test_light"):
             try:
@@ -88,10 +72,7 @@ def run_family(fam, kinds, npca=96):
             except FileNotFoundError:
                 continue
             yt = np.log(np.load(f"{FEAT}/{fam}__{sub}.npz")["params"])
-            Zt = sc.transform(Xt)
-            if pca is not None:
-                Zt = pca.transform(Zt)
-            pr = model.predict(Zt)
+            pr = probe.predict(Xt)
             row[sub] = {names[i]: float(r2_score(yt[:, i], pr[:, i]))
                         for i in range(len(names))}
         res[kind] = row
@@ -110,20 +91,19 @@ def main():
     allres = {}
     for fam in a.families:
         if not os.path.exists(f"{FEAT}/{fam}__train_clean.npz"):
-            print(f"skip {fam} (no features)"); continue
+            print(f"skip {fam} (no features)")
+            continue
         names, res = run_family(fam, a.kinds)
         allres[fam] = res
         print(f"\n=== {fam}  ({' , '.join(names)}) ===")
         print(f"{'features':10s} " + "".join(
-            f"{s.replace('test_',''):>26s}" for s in
+            f"{s.replace('test_', ''):>26s}" for s in
             ("test_clean", "test_camera", "test_light")))
         for kind, row in res.items():
             cells = []
             for sub in ("test_clean", "test_camera", "test_light"):
-                if sub in row:
-                    cells.append("  ".join(f"{n}={row[sub][n]:+.3f}" for n in names))
-                else:
-                    cells.append("-")
+                cells.append("  ".join(f"{n}={row[sub][n]:+.3f}" for n in names)
+                             if sub in row else "-")
             print(f"{kind:10s} " + "".join(f"{c:>26s}" for c in cells))
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     json.dump(allres, open(a.out, "w"), indent=2)

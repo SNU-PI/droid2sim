@@ -1,24 +1,17 @@
 # vjepa-physics-probe
 
 Can physical parameters (mass, friction, restitution) be read out of a frozen
-video world model, so that real2sim pipelines can label object physics without
-guessing?
+video world model, for labeling object physics in real2sim?
 
-**Answer so far:** yes, in simulation, up to the ceiling physics allows. A
-linear probe (Ridge on PCA-reduced features) on frozen **V-JEPA 2-AC** features
-recovers observable parameters at held-out R² 0.91–0.99 across five verified
-MuJoCo interactions — matching or beating a physics-oracle baseline. Where
-physics makes a parameter unobservable (mass in free fall / on an incline),
-both the oracle and the probe fail equally, so the probe is not cheating.
-Raw-pixel baselines collapse under 1 cm camera shifts or +20% lighting
-(R² below −10³); the V-JEPA probe degrades gracefully and its one weakness
-(viewpoint) is repaired by camera-augmented training.
+**In sim: yes.** A linear probe on frozen V-JEPA 2-AC features recovers
+observable parameters at held-out R² 0.91–0.99 across five verified MuJoCo
+interactions, matching a physics-oracle baseline — and fails exactly where
+physics says the parameter is unobservable. Robust to camera/lighting shifts
+that break raw-pixel baselines.
 
-Sim-to-real status: on real DROID clips the appearance channel is ~19× out of
-the sim feature distribution but the motion channel (frame differences) is
-inside it. A motion-only probe closes the distribution gap; it does not yet
-read physics from real footage (interaction mismatch: sim uses
-strike-and-release, DROID pushes keep contact).
+**Sim-to-real: partial.** Motion-channel features bring real DROID clips into
+the sim distribution, but the probe does not yet read physics from real
+footage (sim strikes and releases; DROID pushes keep contact).
 
 ## Layout
 

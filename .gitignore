@@ -1,7 +1,22 @@
-# large data on /data via symlinks — never commit
+# generated datasets, videos, reports, checkpoints, and logs
+artifacts
 data
 ckpt
+checkpoints
 out
-__pycache__/
-*.pyc
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.mp4
+*.gif
 nohup.out
+
+# Python/editor caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.vscode/
+.idea/

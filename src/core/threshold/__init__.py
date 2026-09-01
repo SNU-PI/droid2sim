@@ -25,6 +25,9 @@ from core.threshold.seesaw import Seesaw
 from core.threshold.lean import Lean
 from core.threshold.tower import Tower
 from core.threshold.hill import Hill
+from core.threshold.energy_hill import EnergyHill
+from core.threshold.ramp import Ramp
+from core.threshold.pendulum import Pendulum
 from core.threshold.collide import Collide
 from core.threshold.domino import Domino
 
@@ -34,6 +37,10 @@ FAMILIES = {"seesaw": Seesaw, "lean": Lean, "tower": Tower,
 STATIC = ("seesaw", "lean", "tower")
 DYNAMIC = ("hill", "collide", "domino")
 
+# Kept separate from FAMILIES so the original six-scene sweep and its stored
+# artifacts remain stable.  These scenes share a dimensionless energy margin.
+ENERGY_FAMILIES = {"hill": EnergyHill, "ramp": Ramp, "pendulum": Pendulum}
+
 
 def sample_params(family, rng):
     """Draw one episode's parameters, spread across the family's threshold."""
@@ -42,4 +49,5 @@ def sample_params(family, rng):
 
 __all__ = ["FAMILIES", "STATIC", "DYNAMIC", "sample_params", "Base",
            "Seesaw", "Lean", "Tower", "Hill", "Collide", "Domino",
+           "EnergyHill", "Ramp", "Pendulum", "ENERGY_FAMILIES",
            "G", "TABLE_Z", "IMG", "CTRL_DT"]

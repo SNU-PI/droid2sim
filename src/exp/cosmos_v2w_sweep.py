@@ -163,8 +163,15 @@ def main():
         results = {}
 
     for position, record in enumerate(records, 1):
+        sample_dir = args.output_dir / record["id"]
+        if record["id"] in results and (sample_dir / "rollout.mp4").is_file():
+            print(f"[{position:02d}/{len(records):02d}] {record['id']} already complete; skipping", flush=True)
+            continue
         with np.load(args.sweep_root / record["input_npz"], allow_pickle=False) as data:
-            current_raw = np.asarray(data["primary_image"])
+            # Threshold-v1 manifests called this frame ``primary_image``;
+            # energy-family manifests use the clearer ``current_primary``.
+            current_key = "current_primary" if "current_primary" in data.files else "primary_image"
+            current_raw = np.asarray(data[current_key])
             gt_raw = np.asarray(data["gt_future_primary"])
             condition_raw = np.asarray(data["condition_primary"])
         current = letterbox(current_raw, args.height, args.width)
@@ -183,7 +190,7 @@ def main():
             "generator": generator,
             "output_type": "pil",
         }
-        if record["kind"] == "dynamic":
+        if record.get("kind", "dynamic") == "dynamic":
             call_args["video"] = conditions
         else:
             call_args["image"] = conditions[0]
@@ -192,10 +199,10 @@ def main():
 
         # Five 16 FPS steps are 0.3125 s. Dynamic outputs include the five
         # conditioning frames, while static outputs include the initial image.
-        last_condition = record["condition_pixel_frames"] - 1
+        condition_count = int(record.get("condition_pixel_frames", len(condition_raw)))
+        last_condition = condition_count - 1
         eval_index = min(last_condition + 5, len(frames) - 1)
         future = frames[eval_index]
-        sample_dir = args.output_dir / record["id"]
         sample_dir.mkdir(parents=True, exist_ok=True)
         imageio.mimsave(sample_dir / "rollout.mp4", frames, fps=16, codec="libx264", quality=8)
         Image.fromarray(future).save(sample_dir / "future_primary.png")

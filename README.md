@@ -33,6 +33,9 @@ src/gen/
   make_diagnostics.py                  native 832×480, exact-16fps Tower/Hill set
   make_gifs.py                         visual physics smoke tests
   make_policy_inputs.py                pixel-conditioning previews
+  energy_spec.py                       shared normalized-energy margin design
+  make_energy_sweep.py                 matched Hill/Ramp/Pendulum VWM inputs
+  make_energy_gifs.py                  energy-family physics smoke tests
 
 src/exp/
   cosmos_v2w_sweep.py                  six-environment Predict2 V2W inference
@@ -43,6 +46,8 @@ src/exp/
   verify_diagnostic_collection.py      MP4/PNG/metadata integrity checks
   prioritize_diagnostic_jobs.py        job ordering for the time-limited run
   render_v2w_triplet_gifs.py           LAST / PHYSICS GT / COSMOS GIFs
+  render_energy_v2w_triplet_gifs.py    energy-family comparison GIFs
+  render_observed_history_gifs.py      exact one- or five-frame model inputs
   render_diagnostic_comparison_gif.py  corrected Tower/Hill GIFs
   render_intuitive_v2w_gifs.py         sweep-wide qualitative GIFs
 
@@ -98,6 +103,30 @@ MUJOCO_GL=egl PYTHONPATH=src python src/exp/render_v2w_triplet_gifs.py \
 
 The root wrappers `run_sweep.sh` and `run_vwm.sh` provide the same entry
 points with fewer arguments.
+
+## Energy-conservation family
+
+The first principle-preserving benchmark uses a conservative bead-on-hill,
+frictionless ramp, and rigid pendulum. All three share the dimensionless
+margin `available_energy / required_energy - 1`; the model receives only five
+pixel frames and the prompt, never the margin.
+
+```bash
+MUJOCO_EGL_DEVICE_ID=0 PYTHONPATH=src \
+python src/gen/make_energy_sweep.py \
+  --output-dir artifacts/energy_conservation_sweep
+
+MUJOCO_EGL_DEVICE_ID=0 PYTHONPATH=src \
+python src/gen/make_energy_gifs.py \
+  --output-dir artifacts/energy_conservation_gifs
+
+PYTHONPATH=src python src/exp/render_observed_history_gifs.py \
+  --artifacts-root artifacts
+```
+
+The manifest contains eight matched margins per scene, exact 16 FPS 832x480
+conditioning videos, MuJoCo endpoints at +0.3125 seconds, and an
+analytic-versus-simulation outcome gate.
 
 ## Result
 

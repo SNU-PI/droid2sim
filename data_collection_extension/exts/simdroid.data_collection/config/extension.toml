@@ -1,0 +1,26 @@
+[package]
+version = "0.1.1"
+title = "Franka Waypoint Editor"
+description = "Author TCP waypoints, preview a gripper, and execute Franka sequences with Lula."
+category = "Robotics"
+authors = ["SimDROID"]
+readme = "docs/README.md"
+
+[dependencies]
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.commands" = {}
+"omni.kit.menu.utils" = {}
+"omni.physx" = {}
+"isaacsim.core.simulation_manager" = {}
+"omni.timeline" = {}
+"isaacsim.core.api" = {}
+"isaacsim.core.prims" = {}
+"isaacsim.robot_motion.motion_generation" = {}
+
+[[python.module]]
+name = "simdroid_data_collection"
+
+[[test]]
+dependencies = ["omni.kit.test"]
+timeout = 180
